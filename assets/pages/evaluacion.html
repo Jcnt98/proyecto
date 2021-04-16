@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/estilosEvaluacion.css">
+    <script src="../js/funciones_cuestionario.js"></script>
+    <title>Evaluaciones</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+            <a class="navbar-brand" href="#"><img src="../images/logoPNG.png" class="imagen" title="Poder Judicial"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><img src="../images/cuestionarios2.png" style="max-width: 25px; max-height: 25px;"> Evaluaciones</a>
+                </li>
+                <li class="nav-item">
+              </ul>
+            </div>
+          </nav>    
+    </header>
+        <div class="container"><!--Inicio contenedor-->
+
+            <div class="col"><!--Inicio columna central-->
+                <button class="btn btn-nuevaEvaluacion">+ Nueva Evaluacion</button>
+                <!--Inicio datos iniciales-->               
+                <div class="row" id="seccionDatosIniciales">
+                    <div class="row"><b>Datos Iniciales de la evaluación</b></div>
+                    <div class="row">
+                        <div class="col-2">Fecha Inicial:</div> <div class="col"><input class="inputRedondo" type="date"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">Fecha Final:</div> <div class="col"><input class="inputRedondo" type="date"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2">Empleado a evaluar:</div> <div class="col"><input class="inputRedondo" type="text" placeholder="Juan Pérez"></div>
+                    </div>
+                    <div class="row rowBotonIniciarEvaluacion">
+                        <div class="col"><button class="btn btniniciarEvaluacion">+ Iniciar Evaluacion</button></div>
+                    </div> 
+                </div>
+                <!--Fin datos iniciales-->
+                <!--Inicio Evaluacion-->
+                <div class="row" id="evaluacion">
+                    <div class="row" id="apartado">
+                        <b>Apartado 1. Conocimientos Generales y específicos</b>
+                        <div class="row" id="rowValorApartado">
+                            <div class="col-2" >Valor del apartado: </div> <div class="col"><input class="inputRedondo" type="text" placeholder="10%"></div>
+                        </div> 
+                    </div>
+                    <div class="row" id="pregunta">
+                      <b>1. Legalidad</b>
+                      <p>Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p>  
+                    </div>
+                    <div class="row" id="respuestas">
+                        <button class="btn col" id="noAplica" value="0">No Aplica</button>
+                        <button class="btn col" id="noSatisfactorio" value="1">No Satisfactorio</button>
+                        <button class="btn col" id="regularmenteSatisfactorio" value="2">Regularmente <br> Satisfactorio</button>
+                        <button class="btn col" id="medianamenteSatisfactorio" value="3">Medianamente <br> Satisfactorio</button>
+                        <button class="btn col" id="satisfactorio" value="4">Satisfactorio</button>
+                        <button class="btn col" id="sobresaliente" value="5">Sobresaliente</button>
+                    </div>
+                    <!--Fin Evaluacion-->
+                </div>
+
+            </div><!--Fin columna central-->
+            
+        </div><!--Fin contenedor-->
+    
+    
+    
+</body>
+</html>

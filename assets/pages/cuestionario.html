@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+    <script src="../js/funciones_cuestionario.js"></script>
+    <title>Evaluacion poder judicial</title>
+
+</head>
+<body>
+    
+
+
+<header class="header estilosHeader">
+  <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
+    <a class="navbar-brand" href="#"><img src="../images/logoPNG.png" class="imagen" title="Poder Judicial"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav menu">
+        <li class="nav-item active">
+          <a class="nav-link botonHeader" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link botonHeader" href="#">Evaluaciones</a>
+        </li>
+        <li class="nav-item">
+      </ul>
+    </div>
+  </nav>
+    <!--- Componente Navbar // Barra de navegacion 
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand">
+        <img src="../images/logoPNG.png" class="imagen" title="Poder Judicial">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto menu">
+          <li class="nav-item active ">
+            <a class="nav-link botonHeader"  href="#"> <i class="icon ion-md-home"></i> Inicio </a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link botonHeader" href="#"><i class="ion-md-contacts"></i> Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link botonHeader" href="#"> <i class=" ion-md-clipboard"></i> Cuestionarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link botonHeader  " href="#"><i class=" ion-md-close"></i> Cerrar sesión</a>
+          </li>
+          <div align="right">
+            <img src="../images/usuario.png" class="imagen" title="Usuario">
+             <br><p class="usuario">Nombre de usuario</p>
+          </div>
+      </ul>
+     </div>
+    </nav>
+    -->
+    </header> 
+     
+<!--- Boton nueva evaluacion --> 
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <a class="btn btn-primary" href="#" role="button" onclick="nuevaEvaluacion()">+ Nueva evaluación</a>
+      </div>
+
+    </div>
+
+<!--- Seccion Datos Iniciales --> 
+    <div class="row seccionDatosGenerales"  style="" id="seccion_datosIniciales">
+       <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p> Datos iniciales de la evaluación </p>
+          <p>Fecha Inicial: <input type="date" id="fecha_inicial" name="fecha_inicial"></p>
+          <p>Fecha Final: <input type="date" id="fecha_final" name="fecha_final"></p>
+          <!-- Boton con lista desplegable // SE COMENTA POR CAMBIO HABLADO CON ALEX @CARO
+          <button type="button" class="btn btn-default dropdown-toggle"data-toggle="dropdown">
+            Periodo <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a class="listas" href="#">Enero-Marzo</a></li>
+            <li><a class="listas" href="#">Abril-Mayo</a></li>
+            <li><a class="listas" href="#">Junio-Julio</a></li>
+          </ul> -->
+       <p>Empleado a evaluar </p>
+        <div class="btn-group"> <!-- Boton con lista desplegable -->
+          <!--<input type="text" onchange="consultaEmpleados()"> -->
+          <button type="button" class="btn btn-default dropdown-toggle"data-toggle="dropdown">Nombre de Usuario</button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a class="listas" href="#">Persona 1</a></li>
+            <li><a class="listas" href="#">Persona 2</a></li>
+            <li><a class="listas" href="#">Persona 3</a></li>
+          </ul>
+        </div> <!-- Fin boton desplegable -->
+
+        <a class="btn btn-crear" href="#" role="button" onclick="crearEvaluacion()">Guardar y crear </a>
+       </div>
+    </div>
+<!--- Termina seccion datos --> 
+
+<!--- Empieza seccion apartado --> 
+<div class="row" style="visibility: hidden;" id="seccion_apartado">
+       <div class="secciones-cuestionario col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p class="titulo"> Apartado 1 </p>
+        <!--- text descripcion --> 
+        <div class="form-group">
+          <label class="texto2">Descripcion</label>
+          <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <!--- text Valor asignado-->
+        <div class="form-group">
+          <label class="texto2">Valor asignado</label>
+          <textarea id="valor-asignado" class="form-control" rows="1" placeholder="10%"></textarea>
+        </div>
+        <a class="btn btn-eliminar" href="#" role="button">Eliminar apartado </a><br><br>
+         <a class="btn btn-pregunta-nueva"  role="button" onclick="crearPregunta()">Pregunta nueva </a>
+       </div> <!--- Termina div class apartado --> 
+    </div> <!--- Termina div row --> 
+<!--- Termina seccion apartado --> 
+
+<!--- Empieza seccion pregunta --> 
+<div class="row" style="visibility: hidden;" id="nuevaPregunta">
+       <div class="secciones-cuestionario col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <p class="titulo"> Pregunta 1 </p>
+        <!--- text titulo de pregunta --> 
+        <div class="form-group">
+          <textarea class="form-control" rows="1" placeholder="Titulo de la pregunta"></textarea>
+        </div>
+        <!--- text descripcion-->
+        <div class="form-group">
+          <textarea class="form-control" rows="3" placeholder="Descripcion"></textarea>
+        </div>
+        <a class="btn btn-eliminar" href="#" role="button">Eliminar pregunta </a><br><br>
+         <a class="btn btn-pregunta-nueva" href="#" role="button">Pregunta nueva </a><br><br>
+         <a class="btn btn-apartado-nuevo" href="#" role="button">Nuevo apartado </a>
+       </div> <!--- Termina div class apartado --> 
+    </div> <!--- Termina div row --> 
+<!--- Termina seccion pregunta --> 
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</div>
+</body>
+</html>

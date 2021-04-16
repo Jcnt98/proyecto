@@ -1,0 +1,245 @@
+/*INICIO HEADER*/
+.estilos-header{
+  width: 100%;
+  max-height: 50px!important;
+  min-height: 50px!important;
+  background-color: #898989!important;
+}
+.botonHeader{
+  color: #000000;
+  max-height: 50px;
+}
+.menu a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #FF9966;
+  z-index: 1;
+  transform: scaleX(0);
+  transform-origin: bottom;
+  transition: transform 0.2s ease-in-out;
+}
+.menu a:hover::before {
+  transform: scaleX(.8);
+  }
+/*FIN HEADER*/
+body {
+  background-color: #E8E8E8;
+}
+
+.imagen {
+    max-width: 236.722px;
+    max-height: 51.667px;
+}
+
+
+
+.menu a{ 
+  justify-content: center;
+  position: relative;
+  display: block;
+  padding-top: 3%;
+  padding-bottom: 10px;
+}
+.botonNuevaEvaluacion{
+  margin-left: 20%;
+}
+
+.seccionDatosGenerales{
+
+  background-color: #D0D0CE;
+  padding: 12px;
+  max-width: 1024px;
+  max-height: 331px;
+}
+
+
+
+.btn-primary {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px;
+  background: #0883C4;
+  border: 2px solid;
+  border-color: #294078;
+  position: relative; 
+  transition: all 1s ease;
+  border-radius: 60px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #ffffff;
+  transition: all .5s ease;
+  border-color: #707070;
+  min-width: calc(165px + 15px);
+}
+
+.secciones-cuestionario{
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #45B7D2;
+  padding: 15px;
+}
+
+.titulo{
+  font-size: 18px;
+    text-align: center;
+   font-weight: bold;
+   font-style: italic;
+}
+
+.texto{
+  font-size: 18px;
+}
+
+.texto2{
+  font-style: italic;
+  text-align: justify;
+  padding-top: 10px;
+  font-weight: bold;
+}
+
+.usuario{
+  font-size: 18px;
+  text-align: center;
+  font-style: italic;
+  color: white;
+}
+
+.btn-crear{
+  font-size: 14px;
+  font-weight: bold;
+  
+  border: 2px solid;
+  position: relative; 
+  transition: all 1s ease;
+  border-radius: 60px;
+  margin-top: 10px;
+  margin-left: 10px;
+  color: white;
+  float: right;
+  background-color: #2FD711;
+  border-color: #128C49;
+}
+
+.btn-crear:hover {
+  background-color: #2D7519;
+  transition: all .5s ease;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-color: #68F242;
+}
+
+.btn-eliminar{
+  background-color: #E80C0C;
+  border-radius: 60px;
+  margin-top: -10px; /*Para alinear los botones con los text*/
+  float: right;
+  font-size: 14px;
+  border: 2px solid;
+  position: relative; 
+  transition: all 1s ease;
+  margin-left: 10px;
+  font-weight: bold;
+  color: white;
+  border-color: #7D1E1E;
+}
+
+.btn-eliminar:hover {
+  background-color: #AA0D0D;
+  transition: all .5s ease;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-color: #FF9292;
+}
+
+.btn-pregunta-nueva{
+  background-color: #4230DC;
+  border-radius: 60px;
+  margin-top: -10px; /*Para alinear los botones con los text*/
+  float: right;
+  font-size: 14px;
+  border: 2px solid;
+  position: relative; 
+  transition: all 1s ease;
+  margin-left: 10px;
+  font-weight: bold;
+  color: white;
+  border-color: #211871;
+}
+
+.btn-pregunta-nueva:hover {
+  background-color: #0084BD;
+  transition: all .5s ease;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-color: #C8C2FF;
+}
+
+.btn-apartado-nuevo{
+  background-color: #F0C121;
+  border-radius: 60px;
+  margin-top: -10px; /*Para alinear los botones con los text*/
+  float: right;
+  font-size: 14px;
+  border: 2px solid;
+  position: relative; 
+  transition: all 1s ease;
+  margin-left: 10px;
+  font-weight: bold;
+  color: white;
+  border-color: #A58518;
+}
+
+a:hover{
+  color: white;
+  
+}
+.btn-apartado-nuevo:hover {
+  background-color: #D6CA13;
+  transition: all .5s ease;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  border-color: #F5E801;
+}
+
+#valor-asignado{
+  width: 20%;
+}
+
+.form-control{
+  width: 70%;
+  border-radius: 15px;
+}
+
+.listas{
+  color: white;
+  background-color: #032B41;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-color: #076090;
+  text-align: center;
+  display: block;
+  position: relative;
+  font-size: 14px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.listas:hover{
+  background-color: #076090;
+  transition: all .5s ease;
+  color: white;
+  font-weight: bold;
+  border-color: white;
+  text-decoration: none;
+}

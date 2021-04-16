@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<? php session_destroy(); ?>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="ie=edge">
+  <title>Login Encuestas</title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+  <script type="text/javascript">
+    function validacion_login(){
+      var usuario=$("#usuario").val();
+      var password=$("#password").val();
+      if(usuario!="" && password!=""){
+        $("#loading_anim").css({"display":"block"});
+        $.ajax({
+          type:'post',
+          url:'./assets/php/validacion_login.php',
+          data:{
+            validacion_login:"validacion_login",
+            usuario:usuario,
+            password:password,
+          },
+          success:function(response) {
+            if(response=="success"){
+              window.location.href="./assets/pages/evaluacion.html";
+            }else{
+              $("#loading_anim").css({"display":"none"});
+              alert("Usuario y/o contraseña incorrectos!");
+            }
+          }
+        });
+      }else{
+        alert("Rellenar los campos faltantes");
+      }
+      return false;
+    }
+    </script>
+</head>
+<body>
+  <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+      <div class="card login-card">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <img src="assets/images/cjom3.jpg" style="max-height:100%; max-width: 100%;" alt="login" class="login-card-img">
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <div class="brand-wrapper">
+                <img src="assets/images/logoPJ.jpg" alt="logo" class="logo" style="width: 100%; height: 100%;">
+              </div>
+              <p class="login-card-description">Inicia sesión</p>
+              
+              <form action="assets/php/validacion_login.php" method="post" id="login_form" onsubmit="return validacion_login();">
+                  <div class="form-group">
+                    <label for="usuario" class="sr-only">Usuario</label>
+                    <input type="text" name="usuario" id="usuario" class="form-control" placeholder="Nombre de ususario">
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="***********">
+                  </div>
+                  <!--<button class="btn btn-success" type="button" name="login" id="login_button" type="submit" value="Login">
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"  id="loading_anim"></span>
+                    <span class="sr-only">Cargando...</span>
+                    Login...
+                  </button>-->  
+                  <input name="login" id="login_button" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
