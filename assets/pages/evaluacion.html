@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="../css/estilosEvaluacion.css">
-    <script src="../js/funciones_cuestionario.js"></script>
+    <script  src="../js/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../js/funciones_evaluacion.js"></script>
     <title>Evaluaciones</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#"><img src="../images/cuestionarios2.png" style="max-width: 25px; max-height: 25px;"> Evaluaciones</a>
@@ -32,32 +32,41 @@
           </nav>    
     </header>
         <div class="container"><!--Inicio contenedor-->
-
             <div class="col"><!--Inicio columna central-->
                 <button class="btn btn-nuevaEvaluacion">+ Nueva Evaluacion</button>
                 <!--Inicio datos iniciales-->               
                 <div class="row" id="seccionDatosIniciales">
                     <div class="row"><b>Datos Iniciales de la evaluación</b></div>
                     <div class="row">
-                        <div class="col-2">Fecha Inicial:</div> <div class="col"><input class="inputRedondo" type="date"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Fecha Inicial:</div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2"><input class="inputRedondo" type="date"></div>
                     </div>
                     <div class="row">
-                        <div class="col-2">Fecha Final:</div> <div class="col"><input class="inputRedondo" type="date"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Fecha Final:</div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="date"></div>
                     </div>
                     <div class="row">
-                        <div class="col-2">Empleado a evaluar:</div> <div class="col"><input class="inputRedondo" type="text" placeholder="Juan Pérez"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Empleado a evaluar:</div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input id="inputEmpleado" size="35" class="inputRedondo" type="text" placeholder="Juan Pérez" onchange="buscaEmpleado()" onkeydown="buscaEmpleado()" onkeyup="buscaEmpleado()">
+                            <div class="row" id="divPersona" style="display: none;">
+                                <div class="col"></div>
+                                <div class="col" style="margin-left: -12px;">
+                                    <table>
+                                        <tbody id="tbodyPersona"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row rowBotonIniciarEvaluacion">
-                        <div class="col"><button class="btn btniniciarEvaluacion">+ Iniciar Evaluacion</button></div>
+                    
+                        <div class="row rowBotonIniciarEvaluacion">
+                        <div class="col"><button class="btn btniniciarEvaluacion" onclick="iniciarEvaluacion()">Iniciar Evaluacion</button></div>
                     </div> 
                 </div>
                 <!--Fin datos iniciales-->
                 <!--Inicio Evaluacion-->
-                <div class="row" id="evaluacion">
+                <div class="row" id="evaluacion" style="display: none;">
                     <div class="row" id="apartado">
                         <b>Apartado 1. Conocimientos Generales y específicos</b>
                         <div class="row" id="rowValorApartado">
-                            <div class="col-2" >Valor del apartado: </div> <div class="col"><input class="inputRedondo" type="text" placeholder="10%"></div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2" >Valor del apartado: </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="text" placeholder="10%"></div>
                         </div> 
                     </div>
                     <div class="row" id="pregunta">
