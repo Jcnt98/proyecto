@@ -17,6 +17,4 @@ mysqli_free_result($resultado);         //Liberamos el resultado
 mysqli_close($conexion);                //Cerramos la conexion a la db
 
 };
-
-
 ?>
