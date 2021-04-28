@@ -36,7 +36,7 @@ if($anioInicial!=$anioFinal){
         $resultado2=mysqli_query($conexion,$consulta);
         while($row2=mysqli_fetch_assoc($resultado2)){
             echo "  <div class='row' id='pregunta'>
-                        <b> ".$row2['id'].". ".$row2['concepto']."</b>
+                        <b>".$row2['id'].". ".$row2['concepto']."</b>
                         <p>".$row2['descripcion'].".</p>  
                     </div>
                     <div class='row' id='respuestas'>
