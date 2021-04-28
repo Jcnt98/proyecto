@@ -46,8 +46,7 @@ if($anioInicial!=$anioFinal){
                         <button class='btn col' id='medianamenteSatisfactorio' value='3'>Medianamente <br> Satisfactorio</button>
                         <button class='btn col' id='satisfactorio' value='4'>Satisfactorio</button>
                         <button class='btn col' id='sobresaliente' value='5'>Sobresaliente</button>
-                    </div>
-                    ";
+                    </div>";
         };
     };
     
