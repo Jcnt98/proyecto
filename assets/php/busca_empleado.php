@@ -5,7 +5,7 @@ $empleadoBuscado = $_POST['empleado'];
 if ($empleadoBuscado==" "||$empleadoBuscado=="") {
     return false;
 } else {
-    $consulta = "SELECT nombre,apellidoPat,apellidoMat,cod_empleado FROM cat_empleado WHERE nombre LIKE '%$empleadoBuscado%'";
+    $consulta = "SELECT nombre,apellidoPat,apellidoMat,cod_empleado FROM cat_empleado WHERE nombre LIKE '%$empleadoBuscado%' OR cod_empleado LIKE '%$empleadoBuscado%' ";
     $resultado=mysqli_query($conexion,$consulta);
     while($row=mysqli_fetch_assoc($resultado)) {
         $nombre = "'".$row['nombre'].' '.$row['apellidoPat'].' '.$row['apellidoMat']."'";
