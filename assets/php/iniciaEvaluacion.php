@@ -24,6 +24,7 @@ if($anioInicial!=$anioFinal){
     //Procedemos a obtener los apartados $resultado1 y $row1
     $consulta = "SELECT id, descripcion FROM cat_apartado WHERE id_datosgenerales = '$anioEvaluacion'";
     $resultado1=mysqli_query($conexion,$consulta);
+    $no_pregunta=0; //Este es el número que indica el orden de la pregunta por apartado. Ej. AP 1 Preg 1 Preg 2...
     while($row1=mysqli_fetch_assoc($resultado1)) {
         echo "  <div class='row' id='apartado'>
                     <hr>
@@ -35,8 +36,9 @@ if($anioInicial!=$anioFinal){
         $consulta = "SELECT * FROM cat_pregunta WHERE id_apartado = '$idapartado'";
         $resultado2=mysqli_query($conexion,$consulta);
         while($row2=mysqli_fetch_assoc($resultado2)){
+            $no_pregunta++;//Incrementamos el contador cada vez que se imprima una pregunta.
             echo "  <div class='row' id='pregunta'>
-                        <b>".$row2['id'].". ".$row2['concepto']."</b>
+                        <b>".$no_pregunta.". ".$row2['concepto']."</b>
                         <p>".$row2['descripcion'].".</p>  
                     </div>
                     <div class='row' id='respuestas'>
@@ -48,6 +50,7 @@ if($anioInicial!=$anioFinal){
                         <button class='btn col' id='sobresaliente' value='5'>Sobresaliente</button>
                     </div>";
         };
+        $no_pregunta=0;//Reiniciamos el contador para que al imprimir otro apartado la primera pregunta sea la no.1
     };
     
 };//Fin else...
