@@ -108,7 +108,7 @@ body {
 
 .btnNuevoApartado{
     color: black;
-    background-color: #EAAACF;
+    background-color: #EBC590;
     border-radius: 30px;
     margin: 10px -70px 5px 0;
     font-size: 16px;
@@ -118,9 +118,37 @@ body {
 }
 
 .btnNuevoApartado:hover {
+  background-color: #E2B270;
+  transition: all .5s ease;
+  border-color: #765A6B;
+}
+
+.btnEliminar{
+    color: black;
+    background-color: #EAAACF;
+    border-radius: 30px;
+    margin: 10px -70px 5px 0;
+    font-size: 16px;
+    border: 1px solid;
+    transition: all 1s ease;
+    border-color: #9E798F;
+}
+
+.btnEliminar:hover {
   background-color: #9E798F;
   transition: all .5s ease;
   border-color: #765A6B;
+}
+
+.btnGuardar{
+    color: black;
+    background-color: #68B5D3;
+    border-radius: 30px;
+    margin: 10px -70px 5px 0;
+    font-size: 16px;
+    border: 1px solid;
+    transition: all 1s ease;
+    border-color: #5794AB;
 }
 
 .rowBotonSecciones{
@@ -142,6 +170,11 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] { -moz-appearance:textfield; }
 /** Fin del comentario **/
 
+.ejemplo{
+    color: dimgray;
+    font-size:80%;
+}
+
 #secciones{
     background-color: #D0D0CE;
     border-color: #707070;
@@ -158,6 +191,10 @@ textarea{
 .form-control{
   width: 80%;
   border-radius: 15px;
+}
+
+label{
+    text-align: justify;
 }
 
 

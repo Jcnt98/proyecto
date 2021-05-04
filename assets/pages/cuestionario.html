@@ -14,7 +14,8 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-            <a class="navbar-brand" href="#"><img src="../images/logoPNG.png" class="imagen" title="Poder Judicial"></a>
+          <a class="navbar-brand" href="#"><img src="../images/escudoYucatán.png" class="imagen" title="Poder Judicial"></a>  
+          <a class="navbar-brand" href="#"><img src="../images/logoPNG.png" class="imagen" title="Poder Judicial"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -37,7 +38,7 @@
                 <button class="btn btn-nuevaEvaluacion">+ Nueva Evaluacion</button>
                 <!--Inicio datos iniciales-->               
                 <div class="row" id="secciones">
-                    <div class="row"><b>Datos Iniciales de la evaluación</b></div>
+                    <div class="row"><h4>Datos Iniciales de la evaluación</h4></div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Año de la evaluación:</div> 
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="number" placeholder="2021"></div>
@@ -49,35 +50,48 @@
                 <!--Fin datos iniciales-->
                 <!--Apartado evaluacion-->
                 <div class="row" id="secciones">
-                  <div class="rowBotonSecciones"><button class="btn btnEliminarSeccion">X</button></div>
                     <div class="row" id="apartado">
-                        <b>Apartado 1</b>
+                        <h4>Apartado 1</h4>
+                        <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>
                         <div class="row">
                             <div class="form-group">
                               <textarea name="descripcionApartado" class="form-control" maxlength="500" rows="3" placeholder="Conocimientos Generales y Específicos"></textarea>
                             </div>
+                            <div class="row rowBotonSecciones">
+                              <div class="col"><button class="btn btnGuardar">Guardar apartado</button></div> 
+                            </div>
+                            <div class="row rowBotonSecciones">
+                              <div class="col"><button class="btn btnEliminar">Eliminar apartado</button></div> 
+                            </div>
                         </div> 
+
                     </div>
                   </div>    
                   <!--Fin Evaluacion-->
                   <!--Inicia pregunta-->
                   <div class="row" id="secciones">
-                    <div class="rowBotonSecciones"><button class="btn btnEliminarSeccion">X</button></div>
                     <div class="row" id="apartado">
-                        <b>Pregunta 1</b>
+                        <h4>Pregunta 1</h4> 
+                        <label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label>
                         <div class="row">
                             <div class="form-group">
                               <textarea name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea>
                             </div>
                             <div class="form-group">
+                              <label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>
                               <textarea name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>
                             </div>
                             <div class="row rowBotonSecciones">
                               <div class="col"><button class="btn btnPreguntaNueva">Pregunta nueva</button></div> 
                             </div> 
                             <div class="row rowBotonSecciones">
+                              <div class="col"><button class="btn btnEliminar">Eliminar pregunta</button></div> 
+                            </div> 
+                            <div class="row rowBotonSecciones">
                               <div class="col"><button class="btn btnNuevoApartado">Nuevo apartado</button></div> 
                             </div> 
+                            
+
                           </div> 
                     </div>
                   </div>    
