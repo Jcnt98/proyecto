@@ -35,7 +35,7 @@ body {
 }
 .btn-nuevaEvaluacion {
     color: white;
-    background-color: #3A9F88;
+    background-color: #144653;
     border-radius: 30px;
     margin: 10px 0 5px 0;
 }
@@ -51,8 +51,8 @@ body {
     padding: 2px 0 2px 12px;
 }
 .btniniciarEvaluacion{
-    color: black;
-    background-color: #EBC590;
+    color: white;
+    background-color: #557982;
     border-radius: 30px;
     margin: 10px 0 5px 0;
 }
@@ -92,30 +92,37 @@ body {
 
 /*INICIO SECCION DE RESPUESTAS*/
 #noAplica{
-    background-color: #B6B3B8;
+    background-color: #557982;
     margin: 5px 5px 5px 5px;
 }
 #noSatisfactorio{
-    background-color: #B594CC;
+    background-color: #7F9174;
     margin: 5px 5px 5px 5px;
     border-radius: 0%;
 }
 #regularmenteSatisfactorio{
-    background-color: #E6B1A3;
+    background-color: #939598;
     margin: 5px 5px 5px 5px;
 }
 #medianamenteSatisfactorio{
-    background-color: #F1C5A4;
+    background-color:  #BADFE8;
     margin: 5px 5px 5px 5px;
 }
 #satisfactorio{
-    background-color: #E4E3C2;
+    background-color:    #D2DBCC;
     margin: 5px 5px 5px 5px;
 }
 #sobresaliente{
-    background-color: #AFCCAA;
+    background-color:  #E1DEDE;
     margin: 5px 5px 5px 5px;
 }
+
+#respuestas{
+   margin-left: auto;
+   margin-right: auto;
+}
+
+
 /*FIN SECCION DE RESPUESTAS*/
 
 

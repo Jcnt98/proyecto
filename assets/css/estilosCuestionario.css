@@ -35,7 +35,7 @@ body {
 }
 .btn-nuevaEvaluacion {
     color: white;
-    background-color: #3A9F88;
+    background-color: #144653;
     border-radius: 30px;
     border: 1px solid;
     margin: 10px 0 5px 0;
@@ -56,11 +56,12 @@ body {
     width:25px;
     height:25px;
     padding: 0px;
-    background-color: #E1ACAC;
+    background-color: #939598;
     border: 1px solid;
     font-size: 12px;
     transition: all 1s ease;
     border-color: #D37D7D;
+    width: 152px;
 }
 
 .btnEliminarSeccion:hover{
@@ -75,13 +76,13 @@ body {
 
 .btnCrear{
     color: black;
-    background-color: #EBC590;
+    background-color: #7F9174;
     border-radius: 30px;
     margin: 10px -25px 5px 0;
     font-size: 16px;
-    border: 1px solid;
     transition: all 1s ease;
-    border-color: #C3A57B;
+    width: 152px;
+    border: 1px solid;
 }
 
 .btnCrear:hover {
@@ -92,63 +93,63 @@ body {
 
 .btnPreguntaNueva{
     color: black;
-    background-color: #96D366;
+    background-color: #D2DBCC;
     border-radius: 30px;
     margin: 10px -70px 5px 0;
     font-size: 16px;
-    border: 1px solid;
     transition: all 1s ease;
-    border-color: #638846;
+    width: 152px;
+    border: 1px solid;
 }
 .btnPreguntaNueva:hover {
-  background-color: #78A554;
+  
   transition: all .5s ease;
   border-color: #3B522A;
 }
 
 .btnNuevoApartado{
     color: black;
-    background-color: #EBC590;
+    background-color: #7F9174;
     border-radius: 30px;
     margin: 10px -70px 5px 0;
     font-size: 16px;
-    border: 1px solid;
     transition: all 1s ease;
-    border-color: #9E798F;
+    width: 152px;
+    border: 1px solid;
 }
 
 .btnNuevoApartado:hover {
   background-color: #E2B270;
   transition: all .5s ease;
   border-color: #765A6B;
+  border: 1px solid;
 }
 
 .btnEliminar{
     color: black;
-    background-color: #EAAACF;
+    background-color: #939598;
     border-radius: 30px;
     margin: 10px -70px 5px 0;
     font-size: 16px;
-    border: 1px solid;
     transition: all 1s ease;
-    border-color: #9E798F;
+    width: 152px;
+    border: 1px solid;
 }
 
 .btnEliminar:hover {
-  background-color: #9E798F;
   transition: all .5s ease;
   border-color: #765A6B;
 }
 
 .btnGuardar{
     color: black;
-    background-color: #68B5D3;
+    background-color: #BADFE8;
     border-radius: 30px;
     margin: 10px -70px 5px 0;
     font-size: 16px;
-    border: 1px solid;
     transition: all 1s ease;
-    border-color: #5794AB;
+    width: 152px;
+    border: 1px solid;
 }
 
 .rowBotonSecciones{
