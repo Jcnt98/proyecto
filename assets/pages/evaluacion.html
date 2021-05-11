@@ -4,39 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script  src="../js/jquery/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="../css/estilosEvaluacion.css">
-    <script  src="../js/jquery/jquery-3.4.1.min.js"></script>
     <script src="../js/funciones_evaluacion.js"></script>
     <title>Evaluaciones</title>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+            <a class="navbar-brand" href="#"><img src="../images/escudoYucatan.png" class="imagen" title="Poder Judicial"></a>  
             <a class="navbar-brand" href="#"><img src="../images/logoPNG.png" class="imagen" title="Poder Judicial"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio<span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="../images/cuestionarios2.png" style="max-width: 25px; max-height: 25px;"> Evaluaciones</a>
-                </li>
-                <li class="nav-item">
-              </ul>
-            </div>
-          </nav>    
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><img src="../images/cuestionarios2.png" style="max-width: 25px; max-height: 25px;"> Evaluaciones</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/logout.png" alt=""> Cerrar Sesión</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>     
     </header>
         <div class="container"><!--Inicio contenedor-->
             <div class="col"><!--Inicio columna central-->
                 <button class="btn btn-nuevaEvaluacion">+ Nueva Evaluacion</button>
                 <!--Inicio datos iniciales-->               
                 <div class="row" id="seccionDatosIniciales">
-                    <div class="row"><b>Datos Iniciales de la evaluación</b></div>
+                    <div class="row"><h4>Datos Iniciales de la evaluación</h4></div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Fecha Inicial:</div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2"><input id="fechaInicial" class="inputRedondo" type="date"></div>
                     </div>
@@ -62,10 +69,10 @@
                 </div>
                 <!--Fin datos iniciales-->
                 <!--Inicio Evaluacion-->
-                <div class="row" id="evaluacion" >
+                <div class="row" id="evaluacion" style="display: none;">
                     <div class="row" id="apartado">
                         <h4>Apartado 1. Conocimientos Generales y específicos</h4>
-                        <label>Para empezar, ingresa el valor del apartado.</label>
+                        <label>Ingresa el valor del apartado.</label>
                         <div class="row" id="rowValorApartado">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2" >Valor del apartado: </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="text" placeholder="0%"></div>
                         </div> 
