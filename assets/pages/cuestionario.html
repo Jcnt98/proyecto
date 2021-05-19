@@ -12,6 +12,15 @@
     <title>Creador Evaluaciones</title>
 </head>
 <body>
+  <!-- Small modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        Modal ejemplo
+      </div>
+    </div>
+  </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
           <a class="navbar-brand" href="#"><img src="../images/escudoYucatan.png" class="imagen" title="Poder Judicial"></a>  
@@ -48,7 +57,7 @@
                     
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Año de la evaluación:</div> 
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="number" placeholder="2021" id="inputAnio"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="text" placeholder="Ingresa año" id="inputAnio" onkeyup="validar_entrada(this.id);"></div>
                     </div>
                     <div class="row rowBotonSecciones">
                         <div class="col"><button class="btn btnCrear" onclick="crearEvaluacion()">Crear evaluación</button></div>

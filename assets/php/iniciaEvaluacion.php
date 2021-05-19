@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $empleado = $_POST['empleadoEvaluado'];
 $fechaInicial = $_POST['fechaInicial'];
@@ -24,12 +25,14 @@ if($anioInicial!=$anioFinal){
     //Procedemos a obtener los apartados $resultado1 y $row1
     $consulta = "SELECT id, descripcion FROM cat_apartado WHERE id_cuestionario = '$anioEvaluacion'";
     $resultado1=mysqli_query($conexion,$consulta);
+    $i=0; 
     while($row1=mysqli_fetch_assoc($resultado1)) {
         echo "  <div class='row' id='apartado'>
                     <h4>Apartado ".$row1['id'].". ".$row1['descripcion']."</h4>
                     <label>Ingresa el valor del apartado.</label>
-                    <div class='row' id='rowValorApartado'><div class='col-xs-12 col-sm-12 col-md-12 col-lg-2' >Valor del apartado: </div> <div class='col-xs-12 col-sm-12 col-md-12 col-lg-10'><input class='inputRedondo' type='text' placeholder='0%'></div></div> 
+                    <div class='row' id='rowValorApartado'><div class='col-xs-12 col-sm-12 col-md-12 col-lg-2' >Valor del apartado: </div> <div class='col-xs-12 col-sm-12 col-md-12 col-lg-10'><input id='valor_apartado_&'".$i."'' class='inputRedondo' type='text' placeholder='0%' onkeyup='validar_entrada(this.id);'></div></div> 
                 </div>";
+        $i+=1;
         //Procedemos a obtener las preguntas del apartado correspondiente. $resultado2 $row2    
         $idapartado = $row1['id'];
         $consulta = "SELECT * FROM cat_pregunta WHERE id_apartado = '$idapartado'";
