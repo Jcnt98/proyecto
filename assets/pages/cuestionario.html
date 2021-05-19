@@ -1,116 +1,83 @@
 <!DOCTYPE html>
 <html lang="es"> 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script  src="../js/jquery/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/estilosCuestionario.css">
-    <script src="../js/funciones_cuestionario.js"></script>
-    <title>Creador Evaluaciones</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-          <a class="navbar-brand" href="#"><img src="../images/escudoYucatan.png" class="imagen" title="Poder Judicial"></a>  
-          <a class="navbar-brand" href="#"><img src="../images/logoPNG.png" class="imagen" title="Poder Judicial"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="../images/cuestionarios2.png" style="max-width: 25px; max-height: 25px;"> Evaluaciones</a>
-                </li>
-              </ul>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/logout.png" alt=""> Cerrar Sesión</a>
-                </li>
-              </ul>
-            </div>
-          </nav>    
-    </header>
-        <div class="container"><!--Inicio contenedor-->
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script type="text/javascript" src="../js/jquery/jquery-3.6.0.js"></script>
+      <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../css/estilosCuestionario.css">
+      <script src="../js/funciones_cuestionario.js"></script>
+      <title>Creador Evaluaciones</title>
+  </head>
+  <body>
+      <header>
+          <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+            <a class="navbar-brand" href="#"><img src="../images/escudoYucatan.png" class="imagen" title="Poder Judicial"></a>  
+            <a class="navbar-brand" href="#"><img src="../images/logoPNG.png" class="imagen" title="Poder Judicial"></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><img src="../images/cuestionarios2.png" style="max-width: 25px; max-height: 25px;"> Evaluaciones</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/logout.png" alt=""> Cerrar Sesión</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>    
+      </header>
+          <div class="container"><!--Inicio contenedor-->
 
-            <div class="col"><!--Inicio columna central-->
-                <button class="btn btn-nuevaEvaluacion">+ Nueva Evaluacion</button>
-                <!--Inicio datos iniciales-->               
-                <div class="row" id="secciones">
-                    <div class="row"><h4>Datos Iniciales de la evaluación</h4><p class="ejemplo">Este es el año en el cuál se aplicará la evaluación creada.</p></div>
-                    
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Año de la evaluación:</div> 
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="number" placeholder="2021" id="inputAnio"></div>
-                    </div>
-                    <div class="row rowBotonSecciones">
-                        <div class="col"><button class="btn btnCrear" onclick="crearEvaluacion()">Crear evaluación</button></div>
-                    </div> 
-                </div>
-                <!--Fin datos iniciales-->
-                <!--Inicio evaluacion-->
-                <div class="evaluacion" id="evaluacion" style="display: none;">
-                  <div class="row" id="secciones" >
-                    <div class="row" id="apartado">
-                      <h4>Apartado 1</h4>
-                      <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>
+              <div class="col"><!--Inicio columna central-->
+                  <button class="btn btn-nuevaEvaluacion">+ Nueva Evaluacion</button>
+                  <!--Inicio datos iniciales-->               
+                  <div class="row" id="secciones">
+                      <div class="row"><h4>Datos Iniciales de la evaluación</h4><p class="ejemplo">Este es el año en el cuál se aplicará la evaluación creada.</p></div>
+                      
                       <div class="row">
-                        <div class="form-group">
-                          <textarea name="descripcionApartado" class="form-control" maxlength="500" rows="3" placeholder="Conocimientos Generales y Específicos"></textarea>
-                        </div>
-                        <div class="row rowBotonSecciones">
-                          <div class="col"><button class="btn btnGuardar">Guardar apartado</button></div> 
-                        </div>
-                        <div class="row rowBotonSecciones">
-                          <div class="col"><button class="btn btnEliminar">Eliminar apartado</button></div> 
-                        </div>
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Año de la evaluación:</div> 
+                          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="number" placeholder="2021" id="inputAnio"></div>
+                      </div>
+                      <div class="row rowBotonSecciones">
+                          <div class="col"><button class="btn btnCrear" onclick="crearEvaluacion()">Crear evaluación</button></div>
                       </div> 
-                    </div>
-                  </div><!--Fin seccion-->    
-                    <!--Apa pregunta-->
-                    <div class="row" id="secciones">
-                      <div class="row" id="pregunta">
-                        <h4>Pregunta 1</h4> 
-                        <label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label>
-                        <div class="row">
-                          <div class="form-group">
-                            <textarea name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>
-                            <textarea name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>
-                          </div>
-                          <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnPreguntaNueva">Pregunta nueva</button></div> 
-                          </div> 
-                          <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnEliminar">Eliminar pregunta</button></div> 
-                          </div> 
-                          <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnNuevoApartado">Nuevo apartado</button></div> 
-                          </div> 
-                        </div> 
+                  </div>
+                  <!--Fin datos iniciales-->
+                  <!--Inicio evaluacion-->
+                  <div id="accordion" class="evaluacion">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Apartado 1
+                          </button>
+                          <textarea rows="1" cols="40" placeholder="Introduzca la descripción del apartado." style="webkit-inpu"></textarea>
+                        </h5>
+                      </div>
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                          Pregunta 1.
+                          <input type="text">
+                        </div>
                       </div>
                     </div>
-                </div><!--Fin Evaluacion-->
+                  </div>
+                  <!--Fin Evaluacion-->
 
-            </div><!--Fin columna central-->
-        </div><!--Fin contenedor-->
-    
-    
-    
-</body>
-
-<!-- Scripts JS 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
--->
+              </div><!--Fin columna central-->
+          </div><!--Fin contenedor-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

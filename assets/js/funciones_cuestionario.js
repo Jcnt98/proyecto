@@ -8,8 +8,8 @@ function crearEvaluacion(){
             url: '../php/crearEvaluacion.php',
             data: {anio:anio},
             success:function(response){
-                $("#evaluacion").css('display','block');
-                $("#evaluacion").html(response);
+                $(".evaluacion").css('display','block');
+                $(".evaluacion").html(response);
                 
             }
         });//Fin ajax...
