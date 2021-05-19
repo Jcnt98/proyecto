@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <script  src="../js/jquery/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="../css/estilosCuestionario.css">
     <script src="../js/funciones_cuestionario.js"></script>
@@ -48,72 +48,69 @@
                     
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Año de la evaluación:</div> 
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="number" placeholder="2021"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="number" placeholder="2021" id="inputAnio"></div>
                     </div>
                     <div class="row rowBotonSecciones">
-                        <div class="col"><button class="btn btnCrear">Crear evaluación</button></div>
+                        <div class="col"><button class="btn btnCrear" onclick="crearEvaluacion()">Crear evaluación</button></div>
                     </div> 
                 </div>
                 <!--Fin datos iniciales-->
-                <!--Apartado evaluacion-->
-                <div class="row" id="secciones">
+                <!--Inicio evaluacion-->
+                <div class="evaluacion" id="evaluacion" style="display: none;">
+                  <div class="row" id="secciones" >
                     <div class="row" id="apartado">
-                        <h4>Apartado 1</h4>
-                        <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>
-                        <div class="row">
-                            <div class="form-group">
-                              <textarea name="descripcionApartado" class="form-control" maxlength="500" rows="3" placeholder="Conocimientos Generales y Específicos"></textarea>
-                            </div>
-                            <div class="row rowBotonSecciones">
-                              <div class="col"><button class="btn btnGuardar">Guardar apartado</button></div> 
-                            </div>
-                            <div class="row rowBotonSecciones">
-                              <div class="col"><button class="btn btnEliminar">Eliminar apartado</button></div> 
-                            </div>
-                        </div> 
-
+                      <h4>Apartado 1</h4>
+                      <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>
+                      <div class="row">
+                        <div class="form-group">
+                          <textarea name="descripcionApartado" class="form-control" maxlength="500" rows="3" placeholder="Conocimientos Generales y Específicos"></textarea>
+                        </div>
+                        <div class="row rowBotonSecciones">
+                          <div class="col"><button class="btn btnGuardar">Guardar apartado</button></div> 
+                        </div>
+                        <div class="row rowBotonSecciones">
+                          <div class="col"><button class="btn btnEliminar">Eliminar apartado</button></div> 
+                        </div>
+                      </div> 
                     </div>
-                  </div>    
-                  <!--Fin Evaluacion-->
-                  <!--Inicia pregunta-->
-                  <div class="row" id="secciones">
-                    <div class="row" id="apartado">
+                  </div><!--Fin seccion-->    
+                    <!--Apa pregunta-->
+                    <div class="row" id="secciones">
+                      <div class="row" id="pregunta">
                         <h4>Pregunta 1</h4> 
                         <label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label>
                         <div class="row">
-                            <div class="form-group">
-                              <textarea name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea>
-                            </div>
-                            <div class="form-group">
-                              <label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>
-                              <textarea name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>
-                            </div>
-                            <div class="row rowBotonSecciones">
-                              <div class="col"><button class="btn btnPreguntaNueva">Pregunta nueva</button></div> 
-                            </div> 
-                            <div class="row rowBotonSecciones">
-                              <div class="col"><button class="btn btnEliminar">Eliminar pregunta</button></div> 
-                            </div> 
-                            <div class="row rowBotonSecciones">
-                              <div class="col"><button class="btn btnNuevoApartado">Nuevo apartado</button></div> 
-                            </div> 
-                            
-
+                          <div class="form-group">
+                            <textarea name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea>
+                          </div>
+                          <div class="form-group">
+                            <label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>
+                            <textarea name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>
+                          </div>
+                          <div class="row rowBotonSecciones">
+                            <div class="col"><button class="btn btnPreguntaNueva">Pregunta nueva</button></div> 
                           </div> 
+                          <div class="row rowBotonSecciones">
+                            <div class="col"><button class="btn btnEliminar">Eliminar pregunta</button></div> 
+                          </div> 
+                          <div class="row rowBotonSecciones">
+                            <div class="col"><button class="btn btnNuevoApartado">Nuevo apartado</button></div> 
+                          </div> 
+                        </div> 
+                      </div>
                     </div>
-                  </div>    
-                  <!--Termina pregunta-->
+                </div><!--Fin Evaluacion-->
 
             </div><!--Fin columna central-->
-            
         </div><!--Fin contenedor-->
     
     
     
 </body>
 
-<!-- Scripts JS -->
+<!-- Scripts JS 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+-->
 </html>
