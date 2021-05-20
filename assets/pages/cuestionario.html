@@ -12,15 +12,6 @@
     <title>Creador Evaluaciones</title>
 </head>
 <body>
-  <!-- Small modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
-  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        Modal ejemplo
-      </div>
-    </div>
-  </div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
           <a class="navbar-brand" href="#"><img src="../images/escudoYucatan.png" class="imagen" title="Poder Judicial"></a>  
@@ -64,6 +55,14 @@
                     </div> 
                 </div>
                 <!--Fin datos iniciales-->
+                <!--Alert Evaluacion-->
+                <div id="alert" style="display: none;">
+                <div id="alert_evaluacion" class="alert alert-warning" role="alert" style="display: none;">
+                </div>
+                <p>¿Deseas editar la evaluacion?</p>
+                <button type="button" id="boton_yes" disabled="disabled" class="btn btn-outline-warning">Si</button>
+                <button type="button" id="boton_no" disabled="disabled" class="btn btn-outline-danger">No</button>
+              </div>
                 <!--Inicio evaluacion-->
                 <div class="evaluacion" id="evaluacion" style="display: none;">
                   <div class="row" id="secciones" >

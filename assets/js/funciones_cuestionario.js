@@ -8,14 +8,18 @@ function crearEvaluacion(){
             url: '../php/crearEvaluacion.php',
             data: {anio:anio},
             success:function(response){
-                if(response==1){//Si es uno me imprime el modal
-                    
-                }else{
+				//alert(response);
+				if(response=="1"){
+					$("#alert").show();
+					$("#alert_evaluacion").show();
+					$("#alert_evaluacion").html("Ya existe una evaluación para el año "+anio);
+					$('#boton_yes').show();
+					$('#boton_no').show();
+				}else{
                     $("#evaluacion").css('display','block');
                     $("#evaluacion").html(response);
-                }
-                
-            }
+				}
+			}
         });//Fin ajax...
     };
 };//Fin crearEvaluacion

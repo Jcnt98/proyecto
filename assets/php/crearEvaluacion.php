@@ -10,7 +10,8 @@
     $resultado=mysqli_fetch_assoc($resultado);
     if ($resultado != null) {
         //Si ya existe una evaluación, imprimimos una alerta y lo sacamos de la función
-        echo "Ya existe una evaluación para el año $anio ";
+        //echo "Ya existe una evaluación para el año $anio";
+        echo "1";
         return false;
         //Aqui se podria agregar una opcion para preguntarle al usuario si desea editar el cuestionario
         //Si decide que si, imprimir el cuestionario en modo de edición.
