@@ -12,6 +12,21 @@
     <title>Creador Evaluaciones</title>
 </head>
 <body>
+    <!-- Modal -->
+    <button id="boton_modal"type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" disabled="disabled"></button>
+    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div id="alert_evaluacion" class="alert alert-warning" role="alert" style="display: none;">
+            Ya existe una evaluación para este año, ¿Deseas actualizarla?
+          </div>
+          <button type="button" id="boton_yes" class="btn btn-outline-warning">Si</button>
+          <button type="button" id="boton_no" class="btn btn-outline-danger">No</button>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!--Fin del modal-->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
           <a class="navbar-brand" href="#"><img src="../images/escudoYucatan.png" class="imagen" title="Poder Judicial"></a>  
@@ -39,7 +54,6 @@
           </nav>    
     </header>
         <div class="container"><!--Inicio contenedor-->
-
             <div class="col"><!--Inicio columna central-->
                 <button class="btn btn-nuevaEvaluacion">+ Nueva Evaluacion</button>
                 <!--Inicio datos iniciales-->               
