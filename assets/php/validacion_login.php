@@ -16,8 +16,13 @@ if(isset($_POST['validacion_login'])){
     $consulta="SELECT * FROM cat_usuarios WHERE username='$usuario' AND password='$password'";
     $resultado=mysqli_query($conexion,$consulta);
     if($filas=mysqli_fetch_array($resultado)){
+        if($filas['id']=="1"){
+            $_SESSION['usuario']=$usuario;
+            echo "admin";    
+        }else{
         $_SESSION['usuario']=$usuario;
         echo "success";
+        }//Fin del if
     }else{
         echo "fail";
     }//Fin else   
