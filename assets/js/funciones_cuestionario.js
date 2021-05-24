@@ -10,11 +10,20 @@ function crearEvaluacion(){
             success:function(response){
 				//alert(response);
 				if(response=="1"){
-					$("#alert").show();
+                    alert('si entro');
+                    $("#evaluacion").css('display','block');
+                    $("#evaluacion").html('<div id="alert" style="display: none;"> \
+                    <div id="alert_evaluacion" class="alert alert-warning" role="alert" style="display: none;"> \
+                    </div> \
+                    <p>¿Deseas editar la evaluacion?</p> \
+                    <button type="button" id="boton_yes" class="btn btn-outline-warning">Si</button> \
+                    <button type="button" id="boton_no" class="btn btn-outline-danger">No</button> \
+                  </div>');
+					/*$("#alert").show();
 					$("#alert_evaluacion").show();
 					$("#alert_evaluacion").html("Ya existe una evaluación para el año "+anio);
 					$('#boton_yes').show();
-					$('#boton_no').show();
+					$('#boton_no').show();*/
 				}else{
                     $("#evaluacion").css('display','block');
                     $("#evaluacion").html(response);

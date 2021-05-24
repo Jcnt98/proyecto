@@ -8,16 +8,19 @@ if(!(empty($_SESSION["usuario"]))){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script  src="../js/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript"  src="../js/jquery/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" type="text/css" href="../css/estilosCuestionario.css">
-    <script src="../js/funciones_cuestionario.js"></script>
+    <script type="text/javascript" src="../js/funciones_cuestionario.js"></script>
     <title>Creador Evaluaciones</title>
 </head>
 <body>
     <!-- Modal -->
+<<<<<<< Updated upstream
     <button id="boton_modal"type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" style="display: none;"></button>
+=======
+    <button id="boton_modal"type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" >aaa</button>
+>>>>>>> Stashed changes
     <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -78,8 +81,8 @@ if(!(empty($_SESSION["usuario"]))){
                 <div id="alert_evaluacion" class="alert alert-warning" role="alert" style="display: none;">
                 </div>
                 <p>¿Deseas editar la evaluacion?</p>
-                <button type="button" id="boton_yes" disabled="disabled" class="btn btn-outline-warning">Si</button>
-                <button type="button" id="boton_no" disabled="disabled" class="btn btn-outline-danger">No</button>
+                <button type="button" id="boton_yes" class="btn btn-outline-warning">Si</button>
+                <button type="button" id="boton_no" class="btn btn-outline-danger">No</button>
               </div>
                 <!--Inicio evaluacion-->
                 <div class="evaluacion" id="evaluacion" style="display: none;">
