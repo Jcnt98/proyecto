@@ -15,25 +15,6 @@ if(!(empty($_SESSION["usuario"]))){
     <title>Creador Evaluaciones</title>
 </head>
 <body>
-    <!-- Modal -->
-<<<<<<< Updated upstream
-    <button id="boton_modal"type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" style="display: none;"></button>
-=======
-    <button id="boton_modal"type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm" >aaa</button>
->>>>>>> Stashed changes
-    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div id="alert_evaluacion" class="alert alert-warning" role="alert" style="display: none;">
-            Ya existe una evaluación para este año, ¿Deseas actualizarla?
-          </div>
-          <button type="button" id="boton_yes" class="btn btn-outline-warning">Si</button>
-          <button type="button" id="boton_no" class="btn btn-outline-danger">No</button>
-        </div>
-        </div>
-      </div>
-    </div>
-    <!--Fin del modal-->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
           <a class="navbar-brand" href="#"><img src="../images/escudoYucatan.png" class="imagen" title="Poder Judicial"></a>  
@@ -72,62 +53,12 @@ if(!(empty($_SESSION["usuario"]))){
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10"><input class="inputRedondo" type="text" placeholder="Ingresa año" id="inputAnio" onkeyup="validar_entrada(this.id);"></div>
                     </div>
                     <div class="row rowBotonSecciones">
-                        <div class="col"><button class="btn btnCrear" onclick="crearEvaluacion()">Crear evaluación</button></div>
-                    </div> 
+                        <div id="divBotones" class="col"><button  id="btn_crearEvaluacion" class="btn btnCrear" onclick="crearEvaluacion()">Crear evaluación</button></div>
+                    </div>                     
                 </div>
                 <!--Fin datos iniciales-->
-                <!--Alert Evaluacion-->
-                <div id="alert" style="display: none;">
-                <div id="alert_evaluacion" class="alert alert-warning" role="alert" style="display: none;">
-                </div>
-                <p>¿Deseas editar la evaluacion?</p>
-                <button type="button" id="boton_yes" class="btn btn-outline-warning">Si</button>
-                <button type="button" id="boton_no" class="btn btn-outline-danger">No</button>
-              </div>
                 <!--Inicio evaluacion-->
                 <div class="evaluacion" id="evaluacion" style="display: none;">
-                  <div class="row" id="secciones" >
-                    <div class="row" id="apartado">
-                      <h4>Apartado 1</h4>
-                      <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>
-                      <div class="row">
-                        <div class="form-group">
-                          <textarea name="descripcionApartado" class="form-control" maxlength="500" rows="3" placeholder="Conocimientos Generales y Específicos"></textarea>
-                        </div>
-                        <div class="row rowBotonSecciones">
-                          <div class="col"><button class="btn btnGuardar">Guardar apartado</button></div> 
-                        </div>
-                        <div class="row rowBotonSecciones">
-                          <div class="col"><button class="btn btnEliminar">Eliminar apartado</button></div> 
-                        </div>
-                      </div> 
-                    </div>
-                  </div><!--Fin seccion-->    
-                    <!--Apa pregunta-->
-                    <div class="row" id="secciones">
-                      <div class="row" id="pregunta">
-                        <h4>Pregunta 1</h4> 
-                        <label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label>
-                        <div class="row">
-                          <div class="form-group">
-                            <textarea name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea>
-                          </div>
-                          <div class="form-group">
-                            <label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>
-                            <textarea name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>
-                          </div>
-                          <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnPreguntaNueva">Pregunta nueva</button></div> 
-                          </div> 
-                          <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnEliminar">Eliminar pregunta</button></div> 
-                          </div> 
-                          <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnNuevoApartado">Nuevo apartado</button></div> 
-                          </div> 
-                        </div> 
-                      </div>
-                    </div>
                 </div><!--Fin Evaluacion-->
 
             </div><!--Fin columna central-->
@@ -136,12 +67,6 @@ if(!(empty($_SESSION["usuario"]))){
     
     
 </body>
-
-<!-- Scripts JS 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
--->
 </html>
 <?php
 } else{

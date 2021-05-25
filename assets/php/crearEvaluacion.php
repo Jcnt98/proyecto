@@ -11,11 +11,10 @@
     if ($resultado != null) {
         //Si ya existe una evaluación, imprimimos una alerta y lo sacamos de la función
         //echo "Ya existe una evaluación para el año $anio";
-        echo "1";
+        echo "Ya existe una evaluacion";
         return false;
-        //Aqui se podria agregar una opcion para preguntarle al usuario si desea editar el cuestionario
-        //Si decide que si, imprimir el cuestionario en modo de edición.
     }else {
+    /* CODIGO PARA INSERTAR APARTADO 1 Y PREGUNTA 1
         //Iniciamos la creacion del cuestionario 
         //Insertamos los datos iniciales del cuestionario (nombre, descripcion y anio)
         $datosCuestionario = "INSERT INTO cuestionario (nom_cuestionario,objetivo,periodo) VALUES ('$nombreCuestionario','$descripcionCuestionario','$anio') ";
@@ -31,15 +30,20 @@
         $idApartado = mysqli_insert_id($conexion); //Obtenemos el id del apartado recien insertado 
         $consulta = "INSERT INTO cat_pregunta (id_apartado) VALUES ('$idApartado')";
         $resultado=mysqli_query($conexion,$consulta);
+        //Iniciamos los contadores de apartados y preguntas.
+        */
+        $apartados = 1;
+        $preguntas = 1;
+        
         echo '
             <!--APARTADO-->
             <div class="row" id="secciones" >
-                <div class="row" id="apartado">
-                    <h4>Apartado 1</h4>
+                <div class="row" id="apartado" >
+                    <h4>Apartado '.$apartados.'</h4>
                     <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>
                     <div class="row">
                         <div class="form-group">
-                          <textarea name="descripcionApartado" class="form-control" maxlength="500" rows="3" onchange="actualizaApartado()" placeholder="Conocimientos Generales y Específicos"></textarea>
+                          <textarea name="descripcionApartado" class="form-control" maxlength="500" rows="3" onchange="" placeholder="Conocimientos Generales y Específicos"></textarea>
                         </div>
                         <div class="row rowBotonSecciones">
                           <div class="col"><button class="btn btnGuardar">Guardar apartado</button></div> 
@@ -50,30 +54,32 @@
                     </div> 
                 </div>
             </div>
-            <!--FIN APARTADO-->    
+            <!--FIN APARTADO--> 
             <!--PREGUNTA-->
-            <div class="row" id="secciones">
-                <div class="row" id="pregunta">
-                    <h4>Pregunta 1</h4> 
-                    <label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label>
-                    <div class="row">
-                        <div class="form-group">
-                            <textarea name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>
-                            <textarea name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>
-                        </div>
-                        <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnPreguntaNueva">Pregunta nueva</button></div> 
+            <div id="pregunta&'.$preguntas.'&'.$apartados.'">
+                <div class="row" name="pregunta'.$preguntas.'" id="secciones">
+                    <div id="pregunta" class="row">
+                        <h4>Pregunta '.$preguntas.'</h4> 
+                        <label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label>
+                        <div class="row">
+                            <div class="form-group">
+                                <textarea id="tituloPreg&'.$preguntas.'&'.$apartados.'" name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>
+                                <textarea id="descPreg&'.$preguntas.'&'.$apartados.'" name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>
+                            </div>
+                            <div class="row rowBotonSecciones">
+                                <div class="col"><button id="agregarPregunta&'.$preguntas.'&'.$apartados.'" class="btn btnPreguntaNueva" onclick="nuevaPregunta('.$preguntas.','.$apartados.')">Pregunta nueva</button></div> 
+                            </div> 
+                            <div class="row rowBotonSecciones">
+                                <div class="col"><button onclick="eliminarPregunta('.$preguntas.')" class="btn btnEliminar">Eliminar pregunta</button></div> 
+                            </div> 
+                            <div class="row rowBotonSecciones">
+                                <div class="col" "><button id="agregarApartado&'.$preguntas.'&'.$apartados.'" onclick="agregarApartado('.$apartados.')" class="btn btnNuevoApartado">Nuevo apartado</button></div> 
+                            </div> 
                         </div> 
-                        <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnEliminar">Eliminar pregunta</button></div> 
-                        </div> 
-                        <div class="row rowBotonSecciones">
-                            <div class="col"><button class="btn btnNuevoApartado">Nuevo apartado</button></div> 
-                        </div> 
-                    </div> 
+                    </div>
                 </div>
             </div>
             <!--FIN PREGUNTA-->
