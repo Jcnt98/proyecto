@@ -1,5 +1,3 @@
-let inserts[];
-
 function crearEvaluacion(){
 	//Funcion para crear una evaluación en la pantalla del administrador. Es llamada por el archivo cuestionario.html
     if ($("#inputAnio").val() == "") {
@@ -36,13 +34,14 @@ function nuevaPregunta(noPregunta,noApartado){
 	document.getElementById("agregarPregunta&"+noPregunta+"&"+noApartado).hidden = true;
 	document.getElementById("agregarApartado&"+noPregunta+"&"+noApartado).hidden = true;
 	noPregunta++;
+	document.getElementById("boton_&"+noApartado).value = noPregunta;
 	document.getElementById("evaluacion").innerHTML += '	\
 	<div id="pregunta&'+noPregunta+'&'+noApartado+'">	\
 		<div  class="row"  id="secciones"> \
 			<div class="row" id="pregunta"> \
 				<h4>Pregunta '+noPregunta+' </h4> \
 				<label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label> \
-				<div class="row"> \	
+				<div class="row"> \
 					<div class="form-group"> \
 						<textarea id="tituloPreg&'+noPregunta+'&'+noApartado+'" name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea> \
 					</div> \
@@ -87,10 +86,10 @@ function agregarApartado(noApartado){
 		 <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>\
 		 <div class="row">\
 			 <div class="form-group">\
-			   <textarea name="descripcionApartado" class="form-control" maxlength="500" rows="3" onchange="" placeholder="Conocimientos Generales y Específicos"></textarea>\
+			   <textarea id="descripcion_apartado&'+noApartado+'" name="descripcionApartado" class="form-control" maxlength="500" rows="3" onchange="" placeholder="Conocimientos Generales y Específicos"></textarea>\
 			 </div>\
 			 <div class="row rowBotonSecciones">\
-			   <div class="col"><button class="btn btnGuardar">Guardar apartado</button></div>\
+			   <div class="col"><button id="boton_&'+noApartado+'" value="" class="btn btnGuardar">Guardar apartado</button></div>\
 			 </div>\
 			 <div class="row rowBotonSecciones">\
 			   <div class="col"><button class="btn btnEliminar">Eliminar apartado</button></div> \
@@ -173,3 +172,22 @@ function validar_entrada(id){
 	}//Fin del for
 	document.getElementById(id).value=cant;
 }//Fin de validar entrada..
+
+function guardar_apartado(id){
+	var arreglo = id.split("&");
+	var id_apartado = arreglo[1];
+
+	if(window.XMLHttpRequest){//Code for IE7+, Firefox, Chrome, Opera, Safari..
+		xmlhttp=new XMLHttpRequest();
+	}else{
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}//Fin del else..
+	xmlhttp.onreadystatechange=function(){
+		if(xmlhttp.readyState==4 && xmlhttp.status==200){
+			var valor=xmlhttp.responseText;
+			//document.getElementById("formato_admin").innerHTML=xmlhttp.responseText;
+		}//Fin del if..
+	}//Fin de function..
+	xmlhttp.open("POST","php/guardar_apartado.php?id_apartado="+id_apartado+"&num_preguntas="+document.getElementById(id).value+"&descripcion_apartado"+document.getElementById("descripcion_apartado&"+id_apartado),false);
+	xmlhttp.send();
+}
