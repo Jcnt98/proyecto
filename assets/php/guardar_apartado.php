@@ -1,12 +1,30 @@
 <?php
 include('database.php');
 
-if(empty($_POST['id_apartado'])){
-	$id_apartado="0";
+if(empty($_POST['descripcionApartado'])){
+	$descripcionApartado="";
 }else{
-    $id_apartado=$_POST['id_apartado'];
-}//Fin del if
+    $descripcionApartado=$_POST['descripcionApartado'];
+}//Fin else...
 
+if(empty($_POST['anioEvaluacion'])){
+	$anioEvaluacion="";
+}else{
+    $anioEvaluacion=$_POST['anioEvaluacion'];
+}//Fin else...
+
+if (($descripcion_apartado!=0) && ($anioEvaluacion!0)) {
+    //Agregar codigo...
+}
+
+
+
+
+
+
+
+
+/*
 if(empty($_POST['num_preguntas'])){
 	$num_preguntas="0";
 }else{
@@ -45,3 +63,6 @@ if(($id_apartado!=0)&&($descripcion_apartado!=0)){
     }//Fin del if
     
 }
+
+*/
+php>

@@ -17,8 +17,43 @@
     //CODIGO PARA INSERTAR APARTADO 1 Y PREGUNTA 1
         //Iniciamos la creacion del cuestionario 
         //Insertamos los datos iniciales del cuestionario (nombre, descripcion y anio)
-        $datosCuestionario = "INSERT INTO cuestionario (nom_cuestionario,objetivo,periodo) VALUES ('$nombreCuestionario','$descripcionCuestionario','$anio') ";
-        mysqli_query($conexion, $datosCuestionario);
+        //$datosCuestionario = "INSERT INTO cuestionario (nom_cuestionario,objetivo,periodo) VALUES ('$nombreCuestionario','$descripcionCuestionario','$anio') ";
+        //mysqli_query($conexion, $datosCuestionario);
+        //Insertamos la sección para introducir el apartado y también el div para cargar la tabla.
+        echo '
+        <!--APARTADO-->
+            <div class="row" id="secciones" >
+                <div class="row" id="apartado" >
+                    <h4>Apartado </h4>
+                    <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>
+                    <div class="row">
+                        <div class="form-group">
+                          <textarea id="descApartado" name="descripcionApartado" class="form-control" maxlength="500" rows="3" onchange="" placeholder="Conocimientos Generales y Específicos"></textarea>
+                        </div>
+                        <div class="row rowBotonSecciones">
+                          <div class="col"><button id="btn_guardarApartado" value="" class="btn btnGuardar" onclick="guardar_apartado(this.id);">Guardar apartado</button></div> 
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <!--FIN APARTADO-->
+            <div class="row" id="tablaApartados"><div>
+        ';
+    };//Fin else...
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         //Insertamos el apartado 1 y la pregunta 1 en la base de datos
         //Insertamos el apartado...
         /*$consulta = "SELECT id FROM cuestionario WHERE periodo LIKE '$anio'";
@@ -31,11 +66,12 @@
         $consulta = "INSERT INTO cat_pregunta (id_apartado) VALUES ('$idApartado')";
         $resultado=mysqli_query($conexion,$consulta);
         //Iniciamos los contadores de apartados y preguntas.
-        */
-        $noApartado = 1;
-        $preguntas = 1;
         
-        echo '
+
+        $noApartado = 1;
+        $noPregunta = 1;
+        
+        echo ' 
             <!--APARTADO-->
             <div class="row" id="secciones" >
                 <div class="row" id="apartado" >
@@ -71,22 +107,15 @@
                             </div>
                             <div class="row rowBotonSecciones">
                                 <div class="col"><button id="agregarPregunta&'.$noPregunta.'&'.$noApartado.'" class="btn btnPreguntaNueva" onclick="nuevaPregunta('.$noPregunta.','.$noApartado.')">Pregunta nueva</button></div> 
-                            </div> 
-                            <div class="row rowBotonSecciones">
-                                <div class="col"><button onclick="eliminarPregunta('.$noPregunta.')" class="btn btnEliminar">Eliminar pregunta</button></div> 
-                            </div> 
-                            <div class="row rowBotonSecciones">
-                                <div class="col" "><button id="agregarApartado&'.$noPregunta.'&'.$noApartado.'" onclick="agregarApartado('.$noApartado.')" class="btn btnNuevoApartado">Nuevo apartado</button></div> 
-                            </div> 
                         </div> 
                     </div>
                 </div>
             </div>
             <!--FIN PREGUNTA-->
         ';
+        */ 
         
-        
-    };//Fin else...
+
     
 
 

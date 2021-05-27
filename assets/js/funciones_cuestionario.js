@@ -23,12 +23,42 @@ function crearEvaluacion(){
                     $("#evaluacion").css('display','block');
                     $("#evaluacion").html(response);
 					$("#inputAnio").prop('disabled', true);
-					$("#divBotones").html('<button id="btn_guardarEvaluacion" class="btn btnCrear" onclick="guardarEvaluacion()">Guardar Evaluación</button>');
+					$("#btn_cancelarEvaluacion").css('display','block');
 				};
 			}
         });//Fin ajax...
     };
 };//Fin crearEvaluacion
+
+function presentaPregunta(contador){
+	var vistaPregunta = '<div id="pregunta">	\
+							<div  class="row"  id="secciones"> \
+								<div class="row" id="pregunta"> \
+									<h4>Pregunta '+contador+' </h4> \
+									<label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label> \
+									<div class="row"> \
+										<div class="form-group"> \
+											<textarea id="tituloPreg" name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea> \
+										</div> \
+										<div class="form-group"> \
+											<label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>\
+											<textarea id="descPreg" name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>\
+										</div>\
+										<div class="row rowBotonSecciones">\
+											<div class="col"><button id="agregarPregunta" class="btn btnPreguntaNueva" onclick="nuevaPregunta('+noPregunta+','+noApartado+')">Pregunta nueva</button></div> \
+										</div> \
+										<div class="row rowBotonSecciones">\
+											<div class="col"><button class="btn btnEliminar" onclick="eliminarPregunta('+noPregunta+','+noApartado+')">Eliminar pregunta</button></div> \
+										</div> \
+										<div class="row rowBotonSecciones">\
+											<div class="col" ><button id="agregarApartado&'+noPregunta+'&'+noApartado+'" onclick="agregarApartado('+noApartado+')" class="btn btnNuevoApartado">Nuevo apartado</button></div> \
+										</div> \
+									</div> \
+								</div> \
+							</div> \
+						</div>';
+						return vistaPregunta;
+};//Fin presenta pregunta
 
 function nuevaPregunta(noPregunta,noApartado){
 	document.getElementById("agregarPregunta&"+noPregunta+"&"+noApartado).hidden = true;
@@ -173,10 +203,8 @@ function validar_entrada(id){
 	document.getElementById(id).value=cant;
 }//Fin de validar entrada..
 
-function guardar_apartado(id){
-	var arreglo = id.split("&");
-	var id_apartado = arreglo[1];
-
+function guardar_apartado(){
+	//AJAX
 	if(window.XMLHttpRequest){//Code for IE7+, Firefox, Chrome, Opera, Safari..
 		xmlhttp=new XMLHttpRequest();
 	}else{
@@ -188,6 +216,12 @@ function guardar_apartado(id){
 			//document.getElementById("formato_admin").innerHTML=xmlhttp.responseText;
 		}//Fin del if..
 	}//Fin de function..
-	xmlhttp.open("POST","php/guardar_apartado.php?id_apartado="+id_apartado+"&num_preguntas="+document.getElementById(id).value+"&descripcion_apartado"+document.getElementById("descripcion_apartado&"+id_apartado),false);
+	xmlhttp.open("POST","php/guardar_apartado.php?descripcionApartado="+document.getElementById("descApartado").value,false);
+	//Agregar el apartado del select para saber el año de la evaluacion...
 	xmlhttp.send();
-}
+	cargaTabla();
+};//Fin guardar_apartado...
+
+function cargaTabla(){
+	//Agregar código para cargar la tabla.
+};
