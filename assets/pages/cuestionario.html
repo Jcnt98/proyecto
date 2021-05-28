@@ -17,71 +17,77 @@ if(!(empty($_SESSION["usuario"]))){
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #6c757d;">
+        <div class="container-fluid">
           <a class="navbar-brand" href="#"><img src="../images/escudoYucatan.png" class="imagen" title="Poder Judicial"></a>  
           <a class="navbar-brand" href="#"><img src="../images/logoPNG.png" class="imagen" title="Poder Judicial"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#"><img src="../images/cuestionarios2.png" style="max-width: 25px; max-height: 25px;"> Evaluaciones</a>
-                </li>
-              </ul>
-            </div>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="?page=login"><img style="max-width: 20px; max-height: 20px;" src="../images/logout.png" alt=""> Cerrar Sesión</a>
-                </li>
-              </ul>
-            </div>
-          </nav>    
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link" href="#" style="color: white;"><img style="max-width: 20px; max-height: 20px;" src="../images/home.png" alt=""> Inicio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#" style="color: white;"><img src="../images/cuestionarios2.png" style="max-width: 25px; max-height: 25px;"> Evaluaciones</a></li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse justify-content-end"></div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="?page=login" style="color: white;"><img style="max-width: 20px; max-height: 20px;" src="../images/logout.png" alt=""> Cerrar Sesión</a>
+                  </li>
+                </ul>
+              </div>
+        </div>
+      </nav>   
     </header>
-        <div class="container"><!--Inicio contenedor-->
-                <!--Inicio datos iniciales-->               
-                <div class="row" id="secciones">
-                    <div class="col">
-                        <h4>Datos Iniciales de la evaluación</h4>
-                        <p class="ejemplo">Este es el año en el cuál se aplicará la evaluación creada.</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Año de la evaluación:</div> 
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
-                            <input class="inputRedondo" type="text" placeholder="Ingresa año" id="inputAnio" onkeyup="validar_entrada(this.id);">
-                        </div>
-                    </div>
-                    <div class="row rowBotonSecciones">
-                        <div id="divBotones" class="col">
-                            <button  id="btn_crearEvaluacion" class="btn btn-success" onclick="crearEvaluacion()">Crear evaluación</button>
-                            <button id="btn_cancelarEvaluacion" class="btn btn-danger" onclick="" style="display: none;">Cancelar</button>
-                        </div>
-                    </div>                     
+        <div class="container"><!--Inicio contenedor
+          Inicio datos iniciales-->               
+          <div class="row" id="secciones">
+            <div class="col">
+                <h4 >Datos Iniciales de la evaluación</h4>
+                <p class="ejemplo">Este es el año en el cuál se aplicará la evaluación creada.</p>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2">Año de la evaluación:</div> 
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10">
+                    <select name="inputAnio" id="inputAnio" class="inputRedondo">
+                      
+                    </select>
+                    <!--<input class="inputRedondo" type="text" placeholder="Ingresa año" id="inputAnio" onkeyup="validar_entrada(this.id);">-->
                 </div>
-                <!--Fin datos iniciales-->
-                <!--Inicio evaluacion-->
-                <div class="evaluacion" id="evaluacion" style="display: block;">
-                    <table class="table table-striped" style="display: none;">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Descripción del apartado</th>
-                            <th scope="col">Acciones</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Legalidad</td>
-                            <td><a href="">Editar</a> <a href="">Eliminar</a> <a href="">Preguntas</a></td>
-                          </tr>
-                        </tbody>
-                      </table>                
-                <!--Fin Evaluacion-->
+            </div>
+            <div class="row rowBotonSecciones">
+                <div id="divBotones" class="col">
+                    <button  id="btn_crearEvaluacion" class="btn btn-success" onclick="crearEvaluacion()">Crear evaluación</button>
+                    <button id="btn_cancelarEvaluacion" class="btn btn-danger" onclick="" style="display: none;">Cancelar</button>
+                </div>
+            </div>                     
+          </div>
+          <!--Fin datos iniciales-->
+          <!--Inicio evaluacion-->
+          <div class="evaluacion" id="evaluacion" style="display: block;">
+            <table class="table table-striped table-hover" >
+              <thead class="table-secondary">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Descripción del apartado</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td >Legalidad</td>
+                  <td class="">
+                    <div class="btn-group">
+                      <button class="btn btn-outline-dark"><svg width="20" height="20" focus="true"><use xlink:href="../bootstrap/icons/bootstrap-icons.svg#pencil-square"/></svg></button>
+                      <button class="btn btn-outline-dark"><svg  width="20" height="20" focus="true"><use xlink:href="../bootstrap/icons/bootstrap-icons.svg#x-circle-fill"/></svg></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>                
+          <!--Fin Evaluacion-->
         </div><!--Fin contenedor-->
 
         

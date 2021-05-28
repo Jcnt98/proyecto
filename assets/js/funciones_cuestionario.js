@@ -203,6 +203,18 @@ function validar_entrada(id){
 	document.getElementById(id).value=cant;
 }//Fin de validar entrada..
 
+function cargaSelect(){
+	
+	document.getElementById("inputAnio").innerHTML += '\
+						<option value="0" id="opcion">Elige un año</option>\
+					   <option value="2020">2020</option>\
+					   <option value="2021">2021</option>\
+					   <option value="2022">2022</option>\
+					   <option value="2023">2023</option>\
+					   <option value="2024">2024</option>';
+}//Fin cargaSelect...
+ 
+
 function guardar_apartado(){
 	//AJAX
 	if(window.XMLHttpRequest){//Code for IE7+, Firefox, Chrome, Opera, Safari..
