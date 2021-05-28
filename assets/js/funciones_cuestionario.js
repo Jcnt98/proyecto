@@ -1,7 +1,20 @@
+window.onload = cargaSelect;
+
+function cargaSelect(){
+	
+	document.getElementById("inputAnio").innerHTML += '\
+						<option value="0" id="opcion">Elige un año</option>\
+					   <option value="2020">2020</option>\
+					   <option value="2021">2021</option>\
+					   <option value="2022">2022</option>\
+					   <option value="2023">2023</option>\
+					   <option value="2024">2024</option>';
+}//Fin cargaSelect...
+
 function crearEvaluacion(){
 	//Funcion para crear una evaluación en la pantalla del administrador. Es llamada por el archivo cuestionario.html
-    if ($("#inputAnio").val() == "") {
-        alert("Es necesario introducir un año para crear una evaluación");
+    if ($("#inputAnio").val() == "0") {
+        alert("Es necesario seleccionar un año para crear una evaluación");
     }else{
         var anio = $("#inputAnio").val();
         $.ajax({
@@ -159,12 +172,6 @@ function agregarApartado(noApartado){
  ';
 };
 
-function guardarEvaluacion(){
-	document.getElementById()
-	tituloPreg&'+noPregunta+'&'+noApartado+'
-	descPreg&'+noPregunta+'&'+noApartado+'
-}
-
 function validar_entrada_texto(id){
 	var aux=document.getElementById(id).value;
 	var cant='';
@@ -202,17 +209,6 @@ function validar_entrada(id){
 	}//Fin del for
 	document.getElementById(id).value=cant;
 }//Fin de validar entrada..
-
-function cargaSelect(){
-	
-	document.getElementById("inputAnio").innerHTML += '\
-						<option value="0" id="opcion">Elige un año</option>\
-					   <option value="2020">2020</option>\
-					   <option value="2021">2021</option>\
-					   <option value="2022">2022</option>\
-					   <option value="2023">2023</option>\
-					   <option value="2024">2024</option>';
-}//Fin cargaSelect...
  
 
 function guardar_apartado(){
