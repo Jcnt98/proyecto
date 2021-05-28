@@ -28,4 +28,12 @@ if($apartado!=0){
     }//Fin del else
 }//Fin del if
 echo json_encode($respuesta_variables);
+
+
+function mostrar_tabla_apartado();{
+    //Crear funcion para cargar la tabla de apartados
+    
+}
+
+
 ?>
