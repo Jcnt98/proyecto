@@ -230,6 +230,31 @@ function guardar_apartado(){
 	cargaTabla();
 };//Fin guardar_apartado...
 
-function cargaTabla(){
+function cargaTablaApartados(){
 	//Agregar código para cargar la tabla.
+	$(document).ready(function(){
+		//Defino las variables
+		var periodo=$('#inputAnio').val();
+		//alert(apartado);
+		//Función de Ajax
+		$.ajax({
+		url:"php/cargarTablaApartados.php",
+		dataType:"json",//Formato en como se manda la información
+		type:"get",
+		data:{//Información a enviar o cadena a enviar
+			periodo:periodo
+		},
+		success:function(respuesta){
+			if(respuesta.valor=="ok"){
+				$('#div_variables').html(respuesta.tabla);//En donde quiero mostrar la información
+				$('#div_variables').show('slow');
+			}//Fin del if  
+		},
+			error:function(respuesta){//Si surge un error
+			alert(respuesta.valor);
+			console.log(respuesta);
+		  }
+		});
+	  });
+
 };
