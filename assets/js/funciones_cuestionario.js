@@ -12,10 +12,13 @@ function cargaSelect(){
 }//Fin cargaSelect...
 
 function crearEvaluacion(){
+	if(document.getElementById("inputAnio").value==0){
+		$(document).ready(function(){
+		$('#mensaje').modal('toggle');
+		$('#aviso').text("¡Debes seleccionar un periodo!");
+	});
+}else{
 	//Funcion para crear una evaluación en la pantalla del administrador. Es llamada por el archivo cuestionario.html
-    if ($("#inputAnio").val() == "0") {
-        alert("Es necesario seleccionar un año para crear una evaluación");
-    }else{
         var anio = $("#inputAnio").val();
         $.ajax({
             type:'post',
@@ -24,20 +27,21 @@ function crearEvaluacion(){
             success:function(response){
 				//alert(response);
 				if(response=="Ya existe una evaluacion"){//Ya existe una evaluacion para ese año, por lo que ofreceremos la opción para editarlo.
-                    $("#evaluacion").css('display','block');
-                    $("#evaluacion").html('	<div id="alert"> \
-                    							<div id="alert_evaluacion" class="alert alert-warning" role="alert"> \
-													<p>Ya existe una evaluación para ese año ¿Deseas editar la evaluacion?</p>\
-												</div> \
-                    							<button type="button" id="boton_yes" class="btn btn-outline-warning">Si</button> \
-                    							<button type="button" id="boton_no" class="btn btn-outline-danger">No</button> \
-                  							</div>');
+                    $(document).ready(function(){
+						$('#mensaje').modal('toggle');
+						$('#aviso').text("¡Ya existe una evaluación para este periodo!");
+					});
+					$("#seccion_apartado").show('slow');
+					$("#inputAnio").prop('disabled', true);
+					$("#btn_cancelarEvaluacion").css('display','block');
 				}else{//En este caso no se encontro ninguna evaluacion, asi que procedemos a imprimir la pantalla de creacion.
                     $("#evaluacion").css('display','block');
                     $("#evaluacion").html(response);
+					$("#seccion_apartado").show('slow');
 					$("#inputAnio").prop('disabled', true);
 					$("#btn_cancelarEvaluacion").css('display','block');
-				};
+				}
+				cargaTablaApartados();
 			}
         });//Fin ajax...
     };
@@ -238,7 +242,7 @@ function cargaTablaApartados(){
 		//alert(apartado);
 		//Función de Ajax
 		$.ajax({
-		url:"php/cargarTablaApartados.php",
+		url:"../php/cargarTablaApartados.php",
 		dataType:"json",//Formato en como se manda la información
 		type:"get",
 		data:{//Información a enviar o cadena a enviar
@@ -246,8 +250,8 @@ function cargaTablaApartados(){
 		},
 		success:function(respuesta){
 			if(respuesta.valor=="ok"){
-				$('#div_variables').html(respuesta.tabla);//En donde quiero mostrar la información
-				$('#div_variables').show('slow');
+				$('#form_tabla_apartados').html(respuesta.tabla);//En donde quiero mostrar la información
+				$('#form_tabla_apartados').show('slow');
 			}//Fin del if  
 		},
 			error:function(respuesta){//Si surge un error

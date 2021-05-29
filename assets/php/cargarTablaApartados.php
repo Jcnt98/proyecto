@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "conexion.php";
-include "funciones.php";
+include "database.php";
+include "mostrar_tabla_apartado.php";
 
 if(empty($_GET["periodo"])){
 	$periodo="0";
@@ -21,19 +21,13 @@ if($apartado!=0){
 	desconectar();
 	$num=mysqli_num_rows($result);
 	if($result){
-        $respuesta_variables['valor']="ok";
-        $respuesta_variables['tabla']=mostrar_tabla_apartado($periodo);
+        $respuesta['valor']="ok";
+        $respuesta['tabla']=mostrar_tabla_apartado($col_cuestionario[0]);
     }else{
-        $respuesta_variables['valor']="¡No se encontró ninguna variable!";
+        $respuesta['valor']="¡No se encontró ninguna variable!";
     }//Fin del else
 }//Fin del if
-echo json_encode($respuesta_variables);
-
-
-function mostrar_tabla_apartado();{
-    //Crear funcion para cargar la tabla de apartados
-    
-}
+echo json_encode($respuesta);
 
 
 ?>
