@@ -231,7 +231,7 @@ function guardar_apartado(){
 	xmlhttp.open("POST","php/guardar_apartado.php?descripcionApartado="+document.getElementById("descApartado").value,false);
 	//Agregar el apartado del select para saber el año de la evaluacion...
 	xmlhttp.send();
-	cargaTabla();
+	cargaTablaApartados();
 };//Fin guardar_apartado...
 
 function cargaTablaApartados(){

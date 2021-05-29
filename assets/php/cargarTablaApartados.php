@@ -11,14 +11,13 @@ if(empty($_GET["periodo"])){
 
 $respuesta=array();
 
-if($apartado!=0){
+if($periodo!=0){
     $sql="select id from cuestionario where periodo like '".$periodo."' ";
-    $result=mysqli_query(conectar(),$sql);
-    desconectar();
-    $col_cuestionario=mysqli_fetch_array($result);
+    $result=mysqli_query($conexion,$sql);
+    $col_cuestionario=mysqli_fetch_assoc($result);
     $sql="select * from cat_apartado where id_cuestionario like '".$col_cuestionario[0]."'";//Consultar id de la variable
-    $result=mysqli_query(conectar(),$sql);
-	desconectar();
+    echo $sql;
+    $result=mysqli_query($conexion,$sql);
 	$num=mysqli_num_rows($result);
 	if($result){
         $respuesta['valor']="ok";

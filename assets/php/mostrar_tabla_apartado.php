@@ -1,14 +1,15 @@
 <?php
+include "database.php";
+
 function mostrar_tabla_apartado($id_cuestionario){
     $html="";
     /*if($apartado=="0"){*/
-        $aux=" where id_cuestionario like '".$id_cuestionario."' order by orden";
+        $aux=" where id_cuestionario like '".$id_cuestionario."'";
     /*}else{
         $variable=" where id like '".$id_apartado."' and periodo like '".$id_cuestionario."' order by orden";
     }*/
     $sql="select id, descripcion from cat_apartado ".$aux."";
-    $result_apartados=mysqli_query(conectar(),$sql);
-    desconectar();
+    $result_apartados=mysqli_query($conexion,$sql);
     $num=mysqli_num_rows($result_apartados);
     if ($num>0){
         $i=1;
@@ -22,15 +23,15 @@ function mostrar_tabla_apartado($id_cuestionario){
                 $html.="<th scope='col'>Acciones</th>";
             $html.="</tr>";
         $html.="</thead>";    
-        while($col_apartados=mysqli_fetch_array($result_apartados)){
+        while($col_apartados=mysqli_fetch_assoc($result_apartados)){
             $html.="<tbody>";
                 $html.="<tr>";
                     $html.="<td scope='row' style='text-align:center'>".$i."</td>";
-                    $html.="<td><input disabled='disabled' id='input_apartado&".$id_cuestionario."&".$col_apartados['id']"' value='".$col_apartados['descripcion']."'></input></td>";
+                    $html.="<td><input disabled='disabled' id='input_apartado&".$id_cuestionario."&".$col_apartados['id']."' value='".$col_apartados['descripcion']."'></input></td>";
                     $html.="<td class=''>";
                         $html.="<div class='btn-group'>";
-                            $html.="<button id='input_apartado&".$id_cuestionario."&".$col_apartados['id']"' class='btn btn-outline-dark'><svg width='20' height='20' focus='true'><use xlink:href='../bootstrap/icons/bootstrap-icons.svg#pencil-square'/></svg></button>";
-                            $html.="<button id='input_apartado&".$id_cuestionario."&".$col_apartados['id']"' class='btn btn-outline-dark'><svg width='20' height='20' focus='true'><use xlink:href='../bootstrap/icons/bootstrap-icons.svg#x-circle-fill'/></svg></button>";
+                            $html.="<button id='input_apartado&".$id_cuestionario."&".$col_apartados['id']."' class='btn btn-outline-dark'><svg width='20' height='20' focus='true'><use xlink:href='../bootstrap/icons/bootstrap-icons.svg#pencil-square'/></svg></button>";
+                            $html.="<button id='input_apartado&".$id_cuestionario."&".$col_apartados['id']."' class='btn btn-outline-dark'><svg width='20' height='20' focus='true'><use xlink:href='../bootstrap/icons/bootstrap-icons.svg#x-circle-fill'/></svg></button>";
                         $html.="</div>";
                     $html.="</td>";
                 $html.="</tr>";
