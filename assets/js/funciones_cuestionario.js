@@ -1,15 +1,27 @@
-window.onload = cargaSelect;
-
-function cargaSelect(){
-	
+$(document).ready(function() {
+//Cargando el select de los anios de la evaluacion.
 	document.getElementById("inputAnio").innerHTML += '\
-						<option value="0" id="opcion">Elige un año</option>\
+					<option value="0" id="opcion">Elige un año</option>\
 					   <option value="2020">2020</option>\
 					   <option value="2021">2021</option>\
 					   <option value="2022">2022</option>\
 					   <option value="2023">2023</option>\
-					   <option value="2024">2024</option>';
-}//Fin cargaSelect...
+					   <option value="2023">2024</option>\
+					   <option value="2023">2025</option>\
+					   <option value="2023">2026</option>\
+					   <option value="2023">2027</option>\
+					   <option value="2023">2028</option>\
+					   <option value="2023">2029</option>\
+					   <option value="2023">2030</option>\
+					   <option value="2023">2031</option>\
+					   <option value="2023">2032</option>\
+					   <option value="2023">2033</option>\
+					   <option value="2023">2034</option>\
+					   <option value="2024">2035</option>';
+
+
+}); 
+
 
 function crearEvaluacion(){
 	//Funcion para crear una evaluación en la pantalla del administrador. Es llamada por el archivo cuestionario.html
@@ -23,154 +35,118 @@ function crearEvaluacion(){
             data: {anio:anio},
             success:function(response){
 				//alert(response);
-				if(response=="Ya existe una evaluacion"){//Ya existe una evaluacion para ese año, por lo que ofreceremos la opción para editarlo.
+				if(response=="1"){//Ya existe una evaluacion para ese año, por lo que ofreceremos la opción para editarlo.
                     $("#evaluacion").css('display','block');
                     $("#evaluacion").html('	<div id="alert"> \
                     							<div id="alert_evaluacion" class="alert alert-warning" role="alert"> \
 													<p>Ya existe una evaluación para ese año ¿Deseas editar la evaluacion?</p>\
 												</div> \
-                    							<button type="button" id="boton_yes" class="btn btn-outline-warning">Si</button> \
+                    							<button type="button" id="boton_yes" onclick="cargaTabla()" class="btn btn-outline-warning">Si</button> \
                     							<button type="button" id="boton_no" class="btn btn-outline-danger">No</button> \
                   							</div>');
+											  
 				}else{//En este caso no se encontro ninguna evaluacion, asi que procedemos a imprimir la pantalla de creacion.
-                    $("#evaluacion").css('display','block');
-                    $("#evaluacion").html(response);
-					$("#inputAnio").prop('disabled', true);
-					$("#btn_cancelarEvaluacion").css('display','block');
+					id_cuestionario=response;//Recibimos el id del cuestionario.
+					var opcion=4;
+
+					tablaApartados = $('#tablaApartados').DataTable({  
+					"ajax":{            
+						"url": "../php/crud.php", 
+						"method": 'POST', //usamos el metodo POST
+						"data":{opcion:opcion, id_cuestionario:id_cuestionario}, //enviamos opcion 4 para que haga un SELECT
+						"dataSrc":""
+					},
+					"columns":[
+						{"data": "id"},
+						{"data": "descripcion"},
+						{"defaultContent": '<div class="btn-group"><button class="btn btn-outline-dark"><svg width="20" height="20" focus="true"><use xlink:href="../bootstrap/icons/bootstrap-icons.svg#pencil-square"/></svg></button><button class="btn btn-outline-dark"><svg  width="20" height="20" focus="true"><use xlink:href="../bootstrap/icons/bootstrap-icons.svg#x-circle-fill"/></svg></button></div>'}
+					]
+				});
+				$("#evaluacion").css("display", "block");		
+                 
+				var fila; //captura la fila, para editar o eliminar
+				var id_cuestionario;
+				//submit para el Alta y Actualización
+				$('#form_apartado').submit(function(e){                         
+					e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
+					apartado_descripcion = $.trim($('#input_descripcionApartado').val());                      
+						$.ajax({
+							url: "../php/crud.php",
+							type: "POST",
+							datatype:"json",    
+							data:  {apartado_descripcion:apartado_descripcion, id_cuestionario:id_cuestionario,opcion:opcion},    
+							success: function(data) {
+							tablaApartados.ajax.reload(null, false);
+							cargaSelectApartados(id_cuestionario);
+							}
+						});        
+					$('#modalCRUD').modal('hide');											     			
+				});
+
+				$("#btn_agrega_apartado").click(function(){
+					opcion = 1; //alta           
+					user_id=null;
+					$("#formUsuarios").trigger("reset");
+					$(".modal-header").css( "background-color", "#939598");
+					$(".modal-header").css( "color", "white" );
+					$(".modal-title").text("Apartado Nuevo");
+					$('#modalCRUD').modal('show');	 	    
+				});
+				
 				};
+				
+					
+				$("#select_apartados").change(function(){
+					id_apartado = $('#select_apartados').val();
+					alert ($('#select_apartados').val());
+					opcion = 4; //alta
+					tablaPreguntas = $('#tablaPreguntas').DataTable({  
+						"ajax":{            
+							"url": "../php/crud2.php", 
+							"method": 'POST', //usamos el metodo POST
+							"data":{opcion:opcion, id_apartado:id_apartado}, //enviamos opcion 4 para que haga un SELECT de las preguntas
+							"dataSrc":""
+						},
+						"columns":[
+							{"data": "id"},
+							{"data": "descripcion"},
+							{"data": "concepto"},
+							{"defaultContent": '<div class="btn-group"><button class="btn btn-outline-dark"><svg width="20" height="20" focus="true"><use xlink:href="../bootstrap/icons/bootstrap-icons.svg#pencil-square"/></svg></button><button class="btn btn-outline-dark"><svg  width="20" height="20" focus="true"><use xlink:href="../bootstrap/icons/bootstrap-icons.svg#x-circle-fill"/></svg></button></div>'}
+						]
+					});
+					
+					    
+				});
+
+				
 			}
         });//Fin ajax...
+		
     };
 };//Fin crearEvaluacion
 
-function presentaPregunta(contador){
-	var vistaPregunta = '<div id="pregunta">	\
-							<div  class="row"  id="secciones"> \
-								<div class="row" id="pregunta"> \
-									<h4>Pregunta '+contador+' </h4> \
-									<label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label> \
-									<div class="row"> \
-										<div class="form-group"> \
-											<textarea id="tituloPreg" name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea> \
-										</div> \
-										<div class="form-group"> \
-											<label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>\
-											<textarea id="descPreg" name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>\
-										</div>\
-										<div class="row rowBotonSecciones">\
-											<div class="col"><button id="agregarPregunta" class="btn btnPreguntaNueva" onclick="nuevaPregunta('+noPregunta+','+noApartado+')">Pregunta nueva</button></div> \
-										</div> \
-										<div class="row rowBotonSecciones">\
-											<div class="col"><button class="btn btnEliminar" onclick="eliminarPregunta('+noPregunta+','+noApartado+')">Eliminar pregunta</button></div> \
-										</div> \
-										<div class="row rowBotonSecciones">\
-											<div class="col" ><button id="agregarApartado&'+noPregunta+'&'+noApartado+'" onclick="agregarApartado('+noApartado+')" class="btn btnNuevoApartado">Nuevo apartado</button></div> \
-										</div> \
-									</div> \
-								</div> \
-							</div> \
-						</div>';
-						return vistaPregunta;
-};//Fin presenta pregunta
-
-function nuevaPregunta(noPregunta,noApartado){
-	document.getElementById("agregarPregunta&"+noPregunta+"&"+noApartado).hidden = true;
-	document.getElementById("agregarApartado&"+noPregunta+"&"+noApartado).hidden = true;
-	noPregunta++;
-	document.getElementById("boton_&"+noApartado).value = noPregunta;
-	document.getElementById("evaluacion").innerHTML += '	\
-	<div id="pregunta&'+noPregunta+'&'+noApartado+'">	\
-		<div  class="row"  id="secciones"> \
-			<div class="row" id="pregunta"> \
-				<h4>Pregunta '+noPregunta+' </h4> \
-				<label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label> \
-				<div class="row"> \
-					<div class="form-group"> \
-						<textarea id="tituloPreg&'+noPregunta+'&'+noApartado+'" name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea> \
-					</div> \
-					<div class="form-group"> \
-						<label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>\
-						<textarea id="descPreg&'+noPregunta+'&'+noApartado+'" name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>\
-					</div>\
-					<div class="row rowBotonSecciones">\
-						<div class="col"><button id="agregarPregunta&'+noPregunta+'&'+noApartado+'" class="btn btnPreguntaNueva" onclick="nuevaPregunta('+noPregunta+','+noApartado+')">Pregunta nueva</button></div> \
-					</div> \
-					<div class="row rowBotonSecciones">\
-						<div class="col"><button class="btn btnEliminar" onclick="eliminarPregunta('+noPregunta+','+noApartado+')">Eliminar pregunta</button></div> \
-					</div> \
-					<div class="row rowBotonSecciones">\
-						<div class="col" ><button id="agregarApartado&'+noPregunta+'&'+noApartado+'" onclick="agregarApartado('+noApartado+')" class="btn btnNuevoApartado">Nuevo apartado</button></div> \
-					</div> \
-				</div> \
-			</div> \
-		</div> \
-	</div>';
-};//Fin nuevaPregunta...
-
-function eliminarPregunta(noPregunta,noApartado){
-	if (noPregunta == 1) {
-		alert("No existen preguntas para eliminar");
-	}else{
-		document.getElementById("pregunta&"+noPregunta+"&"+noApartado).remove();
-		var noPreguntaAnterior = noPregunta-1;
-		document.getElementById("agregarPregunta&"+noPreguntaAnterior+"&"+noApartado).hidden = false;
-		document.getElementById("agregarApartado&"+noPreguntaAnterior+"&"+noApartado).hidden = false;
-	};
-};//Fin eliminarPregunta...
-
-function agregarApartado(noApartado){
-	var noPregunta = 1;
-	noApartado++;
- document.getElementById("evaluacion").innerHTML += '\
- <!--APARTADO-->\
- <div class="row" id="secciones" >\
-	 <div class="row" id="apartado">\
-		 <h4>Apartado '+noApartado+'</h4> \
-		 <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>\
-		 <div class="row">\
-			 <div class="form-group">\
-			   <textarea id="descripcion_apartado&'+noApartado+'" name="descripcionApartado" class="form-control" maxlength="500" rows="3" onchange="" placeholder="Conocimientos Generales y Específicos"></textarea>\
-			 </div>\
-			 <div class="row rowBotonSecciones">\
-			   <div class="col"><button id="boton_&'+noApartado+'" value="" class="btn btnGuardar">Guardar apartado</button></div>\
-			 </div>\
-			 <div class="row rowBotonSecciones">\
-			   <div class="col"><button class="btn btnEliminar">Eliminar apartado</button></div> \
-			 </div>\
-		 </div> \
-	 </div>\
- </div>\
- <!--FIN APARTADO-->    \
- <!--PREGUNTA-->\
- <div id="pregunta&'+noPregunta+'&'+noApartado+'">\
-	 <div class="row" name="pregunta'+noPregunta+'" id="secciones">\
-		 <div id="pregunta" class="row">\
-			 <h4>Pregunta '+noPregunta+'</h4> \
-			 <label> Escriba el título de la pregunta sin numerar la misma. <p class="ejemplo">Ej. Legalidad</p></label>\
-			 <div class="row">\
-				 <div class="form-group">\
-					 <textarea id="tituloPreg&'+noPregunta+'&'+noApartado+'" name="tituloPregunta" maxlength="500" class="form-control" rows="1" placeholder="Legalidad"></textarea>\
-				 </div>\
-				 <div class="form-group">\
-					 <label> Escriba la descripción de la pregunta  <p class="ejemplo">Ej. Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche.</p></label>\
-					 <textarea id="descPreg&'+noPregunta+'&'+noApartado+'" name="descripcionPregunta" maxlength="500" class="form-control" rows="3" placeholder="Conoce, cumple y demuestra dominio sobre el conocimiento de la normatividad que regula su actividad, de tal forma que no sea objeto de reproche. "></textarea>\
-				 </div>\
-				 <div class="row rowBotonSecciones">\
-					 <div class="col"><button id="agregarPregunta&'+noPregunta+'&'+noApartado+'" class="btn btnPreguntaNueva" onclick="nuevaPregunta('+noPregunta+','+noApartado+')">Pregunta nueva</button></div> \
-				 </div> \
-				 <div class="row rowBotonSecciones">\
-					 <div class="col"><button onclick="eliminarPregunta('+noPregunta+','+noApartado+')" class="btn btnEliminar">Eliminar pregunta</button></div> \
-				 </div> \
-				 <div class="row rowBotonSecciones">\
-					 <div class="col" "><button id="agregarApartado&'+noPregunta+'&'+noApartado+'" onclick="agregarApartado('+noApartado+')" class="btn btnNuevoApartado">Nuevo apartado</button></div> \
-				 </div> \
-			 </div> \
-		 </div>\
-	 </div>\
- </div>\
- <!--FIN PREGUNTA-->\
- ';
+function cargaSelectApartados(id_cuestionario){
+	$.ajax({
+		url: "../php/cargaSelectApartados.php",
+		type: "POST",    
+		data:  {id_cuestionario:id_cuestionario},    
+		success:function(response) {
+		$("#select_apartados").html(response);
+		
+		}
+	});
 };
+
+/*function agrega_apartado(){
+		opcion = 1; //alta           
+		user_id=null;
+		$("#formUsuarios").trigger("reset");
+		$(".modal-header").css( "background-color", "#939598");
+		$(".modal-header").css( "color", "white" );
+		$(".modal-title").text("Apartado Nuevo");
+		$('#modalCRUD').modal('show');	    
+};//Fin agrega_apartado*/
+
 
 function validar_entrada_texto(id){
 	var aux=document.getElementById(id).value;
@@ -227,9 +203,41 @@ function guardar_apartado(){
 	xmlhttp.open("POST","php/guardar_apartado.php?descripcionApartado="+document.getElementById("descApartado").value,false);
 	//Agregar el apartado del select para saber el año de la evaluacion...
 	xmlhttp.send();
-	cargaTabla();
+	tablaApartados;
 };//Fin guardar_apartado...
 
 function cargaTabla(){
-	//Agregar código para cargar la tabla.
+	/*var opcion = 4;
+	id_cuestionario = document.getElementById("inputAnio").value;
+	
+	tablaCuestionario = $('#tablaCuestionario').DataTable({  
+		"ajax":{            
+			"url": "../php/crud.php", 
+			"method": 'POST', //usamos el metodo POST
+			"data":{opcion:opcion, id_cuestionario:id_cuestionario}, //enviamos opcion 4 para que haga un SELECT
+			"dataSrc":""
+		},
+		"columns":[
+			{"data": "id"},
+			{"data": "descripcion"},
+			{"defaultContent": '<div class="btn-group"><button class="btn btn-outline-dark"><svg width="20" height="20" focus="true"><use xlink:href="../bootstrap/icons/bootstrap-icons.svg#pencil-square"/></svg></button><button class="btn btn-outline-dark"><svg  width="20" height="20" focus="true"><use xlink:href="../bootstrap/icons/bootstrap-icons.svg#x-circle-fill"/></svg></button></div>'}
+		]
+	});
+	$("#evaluacion").css("display", "block");
+	//AJAX
+	if(window.XMLHttpRequest){//Code for IE7+, Firefox, Chrome, Opera, Safari..
+		xmlhttp=new XMLHttpRequest();
+	}else{
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}//Fin del else..
+	xmlhttp.onreadystatechange=function(){
+		if(xmlhttp.readyState==4 && xmlhttp.status==200){
+			var valor=xmlhttp.responseText;
+			document.getElementById("tableBody").innerHTML=xmlhttp.responseText;
+		}//Fin del if..
+	}//Fin de function..
+	xmlhttp.open("POST","../php/cargaTabla.php?inputAnio="+document.getElementById("inputAnio").value,false);
+	//Agregar el apartado del select para saber el año de la evaluacion...
+	xmlhttp.send();
+	*/
 };
