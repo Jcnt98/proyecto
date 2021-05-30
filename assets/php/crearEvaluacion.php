@@ -11,17 +11,15 @@
     if ($resultado != null) {
         //Si ya existe una evaluación, imprimimos una alerta y lo sacamos de la función
         //echo "Ya existe una evaluación para el año $anio";
-        echo "1";
-        return false;
+        echo "Ya existe una evaluacion";
     }else {
     //CODIGO PARA INSERTAR APARTADO 1 Y PREGUNTA 1
         //Iniciamos la creacion del cuestionario 
         //Insertamos los datos iniciales del cuestionario (nombre, descripcion y anio)
-        $datosCuestionario = "INSERT INTO cuestionario (nom_cuestionario,objetivo,periodo) VALUES ('$nombreCuestionario','$descripcionCuestionario','$anio') ";
-        mysqli_query($conexion, $datosCuestionario);
-        echo mysqli_insert_id($conexion);
+        //$datosCuestionario = "INSERT INTO cuestionario (nom_cuestionario,objetivo,periodo) VALUES ('$nombreCuestionario','$descripcionCuestionario','$anio') ";
+        //mysqli_query($conexion, $datosCuestionario);
         //Insertamos la sección para introducir el apartado y también el div para cargar la tabla.
-        
+        echo "ok";
     };//Fin else...
 
 

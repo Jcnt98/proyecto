@@ -8,11 +8,11 @@ if(!(empty($_SESSION["usuario"]))){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- BOOT CSS--><link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
-    <!-- CUSTOM CSS--><link rel="stylesheet" type="text/css" href="../css/estilosCuestionario.css"/>
-    <!--datables CSS básico--><link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css"/>
-    <!--datables estilo bootstrap 4 CSS--><link rel="stylesheet"  type="text/css" href="../datatables/DataTables-1.10.24/css/dataTables.bootstrap.min.css">
-    
+    <!--JQUERY--><script type="text/javascript"  src="../js/jquery/jquery-3.6.0.js"></script>
+    <!--BOOT JS--><script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- BOOT CSS--><link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- CUSTOM CSS--><link rel="stylesheet" type="text/css" href="../css/estilosCuestionario.css">
+    <!-- CUSTOM JS--><script type="text/javascript" src="../js/funciones_cuestionario.js"></script>
     <title>Creador Evaluaciones</title>
 </head>
 <body>
@@ -61,74 +61,49 @@ if(!(empty($_SESSION["usuario"]))){
             </div>                     
           </div>
           <!--Fin datos iniciales-->
-          <!--Inicio evaluacion-->
-          <div class="evaluacion" id="evaluacion" style="display: none;">
-            <button id="btn_agrega_apartado" class="btn btn-success" data-toggle="modal">Agregar Apartado</button>
-            <div class="table-responsive">
-              <table id="tablaApartados" class="table table-striped table-hover ta" style="width:100%;">
-                <thead class="table-secondary">
-                  <tr>
-                    <th style="display: none;">Id</th>
-                    <th>#</th>
-                    <th>Descripción del apartado</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>
-            <div class="row"><select class="col-sm-3" id="select_apartados"></select></div>
-            <div class="table-responsive">
-              <table id="tablaPreguntas" class="table table-striped table-hover ta" style="width:100%;">
-                <thead class="table-secondary">
-                  <tr>
-                    <th style="display: none;">Id</th>
-                    <th>#</th>
-                    <th>Descripcion</th>
-                    <th>Concepto</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>                      
-          <!--Fin Evaluacion-->
-          <!--Modal para CRUD-->
-          <div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                <form id="form_apartado">    
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                              <label for="" class="col-form-label">Descripción del apartado:</label>
-                              <input type="textArea" class="form-control" id="input_descripcionApartado">
-                            </div>
-                        </div>    
-                      </div>               
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
-                    </div>
-                </form>    
-                </div>
+          <div class="row" id="seccion_apartado" style="overflow: hidden; display:none;">
+            <div class="row" id="secciones">
+              <div class="row" id="apartado" >
+                  <h4>Apartado </h4>
+                  <label>Escriba la descripción del apartado.<p class="ejemplo">Ej. Conocimientos Generales y Específicos</p></label>
+                  <div class="row">
+                      <div class="form-group">
+                        <textarea id="descApartado" name="descripcionApartado" class="form-control" maxlength="500" rows="3" onchange="" placeholder="Conocimientos Generales y Específicos"></textarea>
+                      </div>
+                      <div class="row rowBotonSecciones">
+                        <div class="col"><button id="btn_guardarApartado" value="" class="btn btnGuardar" onclick="guardar_apartado(this.id);">Guardar apartado</button></div> 
+                      </div>
+                  </div> 
+              </div>
             </div>
           </div>
+        </div>
+        <!--FIN APARTADO-->
+        <div class="row" id="tablaApartados"><div>
+          <!--Inicio evaluacion-->
+          <div class="form-group row" id="form_tabla_apartados" style="overflow: hidden; display:none;">
+
+          </div>             
+          <!--Fin Evaluacion-->
         </div><!--Fin contenedor-->
-<!--JQUERY--><script type="text/javascript"  src="../js/jquery/jquery-3.6.0.js"></script>
-<!--BOOT JS--><script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- CUSTOM JS--><script type="text/javascript" src="../js/funciones_cuestionario.js"></script>
-<!-- DATA-TABLES--><script type="text/javascript" src="../datatables/datatables.min.js"></script> 
-        
+
+<!-- Modal para avisos -->
+<div id="mensaje" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Alerta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="aviso" class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin del Modal -->      
 </body>
 </html>
 <?php
